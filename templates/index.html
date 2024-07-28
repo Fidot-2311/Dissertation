@@ -174,20 +174,30 @@
             formData.forEach((value, key) => { jsonData[key] = Number(value); });
 
             document.getElementById("spinner").style.display = "block"; // Show spinner
-            document.getElementById("result").innerHTML = ""; // Clear previous result
+            document.getElementById("result").innerHTML = "";
 
             fetch("/predict", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify([jsonData])
             })
             .then(response => response.json())
             .then(data => {
                 document.getElementById("spinner").style.display = "none"; // Hide spinner
                 let resultDiv = document.getElementById("result");
-                resultDiv.innerHTML = `<h3>Predictions</h3><p>${JSON.stringify(data.predictions)}</p><h3>Probabilities</h3><p>${JSON.stringify(data.predictions_proba)}</p>`;
+                let predictions = data.predictions;
+                let probabilities = data.predictions_proba;
+
+                // Assuming 3 classes, you can customize this as per your class labels
+                let classLabels = ["Class 0", "Class 1", "Class 2"];
+
+                let probabilitiesHTML = "<h3>Probabilities</h3><ul>";
+                probabilities[0].forEach((prob, index) => {
+                    probabilitiesHTML += `<li>${classLabels[index]}: ${(prob * 100).toFixed(2)}%</li>`;
+                });
+                probabilitiesHTML += "</ul>";
+
+                resultDiv.innerHTML = `<h3>Predictions</h3><p>${predictions}</p>${probabilitiesHTML}`;
             })
             .catch(error => {
                 document.getElementById("spinner").style.display = "none"; // Hide spinner
