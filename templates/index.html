@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Football Player Position Predictor</title>
+    <title>Pitch Perfect Prediction</title>
 </head>
 <body>
-    <h1>Football Player Position Predictor</h1>
-    <form id="predictForm">
+    <h1>Pitch Perfect Prediction</h1>
+    <form id="prediction-form">
         <label for="TouDef3rd">TouDef3rd:</label>
         <input type="number" id="TouDef3rd" name="TouDef3rd"><br><br>
         <label for="TI">TI:</label>
@@ -34,31 +34,31 @@
         <input type="number" id="TouMid3rd" name="TouMid3rd"><br><br>
         <label for="Shots">Shots:</label>
         <input type="number" id="Shots" name="Shots"><br><br>
-        <button type="button" onclick="makePrediction()">Predict</button>
+        <input type="submit" value="Predict">
     </form>
-    <div id="result"></div>
+    <div id="results"></div>
+
     <script>
-        function makePrediction() {
-            const formData = new FormData(document.getElementById('predictForm'));
-            const data = {};
+        document.getElementById('prediction-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            const formObject = {};
             formData.forEach((value, key) => {
-                data[key] = parseFloat(value);
+                formObject[key] = parseFloat(value);
             });
-            fetch('/predict', {
+
+            const response = await fetch('/predict', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
-                body: JSON.stringify([data])
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('result').innerText = JSON.stringify(data, null, 2);
-            })
-            .catch(error => {
-                console.error('Error:', error);
+                body: JSON.stringify([formObject]),
             });
-        }
+
+            const result = await response.json();
+            document.getElementById('results').innerText = JSON.stringify(result, null, 2);
+        });
     </script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import joblib
 import pandas as pd
 
@@ -8,23 +8,23 @@ model = joblib.load('best_xgboost_model.pkl')
 # Create a Flask app
 app = Flask(__name__)
 
-# Define the root route
+# Define the root route to serve the HTML file
 @app.route('/')
 def home():
-    return "Welcome to the Pitch Perfect Prediction API. Use the /predict endpoint to get predictions."
+    return render_template('index.html')
 
 # Define the predict route
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
         # Get the JSON data from the request
-        data = request.get_json()
+        data = request.json
 
         # Convert data to DataFrame
         df = pd.DataFrame(data)
 
         # Define the top 13 features
-        top_13_features = [
+        top 13_features = [
             'TouDef3rd', 'TI', 'Clr', 'PasTotPrgDist', 'PasDead',
             'TouDefPen', 'PasMedCmp', 'TouAtt3rd', 'RecProg',
             'TouAttPen', 'PasTotCmp', 'TouMid3rd', 'Shots'
