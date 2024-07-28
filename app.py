@@ -24,7 +24,7 @@ def predict():
         df = pd.DataFrame(data)
 
         # Define the top 13 features
-        top 13_features = [
+        top_13_features = [
             'TouDef3rd', 'TI', 'Clr', 'PasTotPrgDist', 'PasDead',
             'TouDefPen', 'PasMedCmp', 'TouAtt3rd', 'RecProg',
             'TouAttPen', 'PasTotCmp', 'TouMid3rd', 'Shots'
