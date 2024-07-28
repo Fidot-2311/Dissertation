@@ -6,146 +6,148 @@
     <title>Pitch Perfect Prediction</title>
     <style>
         body {
+            background-color: #4CAF50; /* Green background like a football field */
             font-family: Arial, sans-serif;
-            background-color: #4CAF50; /* Green color for football field */
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .container {
-            max-width: 600px;
-            width: 100%;
-            background: #fff;
+            color: #fff;
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
         }
         h1 {
             text-align: center;
-            color: #333;
+        }
+        form {
+            max-width: 600px;
+            margin: auto;
+            background-color: #2E7D32; /* Darker green for contrast */
+            padding: 20px;
+            border-radius: 10px;
         }
         .form-group {
             margin-bottom: 15px;
         }
         label {
+            font-weight: bold;
             display: block;
             margin-bottom: 5px;
-            font-weight: bold;
-            position: relative;
         }
         input[type="number"] {
             width: 100%;
-            padding: 10px;
+            padding: 8px;
             box-sizing: border-box;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 4px;
         }
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #007bff;
-            border: none;
+        input[type="submit"] {
+            background-color: #1B5E20; /* Darker button for better visibility */
             color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
-            border-radius: 5px;
-            font-size: 16px;
+            width: 100%;
         }
-        button:hover {
-            background-color: #0056b3;
+        input[type="submit"]:hover {
+            background-color: #66BB6A; /* Hover effect */
         }
-        .result {
-            margin-top: 20px;
-            padding: 10px;
-            background: #e7f7ff;
-            border-left: 5px solid #007bff;
-            border-radius: 5px;
+        .description {
+            font-size: 0.9em;
+            color: #C8E6C9;
+            margin-top: -10px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Pitch Perfect Prediction</h1>
-        <form id="prediction-form">
-            <div class="form-group">
-                <label for="TouDef3rd" title="Touches in defensive third">TouDef3rd:</label>
-                <input type="number" id="TouDef3rd" name="TouDef3rd" min="0" step="1" required>
-            </div>
-            <div class="form-group">
-                <label for="TI" title="Throw Ins Taken">TI:</label>
-                <input type="number" id="TI" name="TI" min="0" step="1" required>
-            </div>
-            <div class="form-group">
-                <label for="Clr" title="Clearances made">Clr:</label>
-                <input type="number" id="Clr" name="Clr" min="0" step="1" required>
-            </div>
-            <div class="form-group">
-                <label for="PasTotPrgDist" title="Total distance, in yards, that completed passes have traveled towards the opponent's goal">PasTotPrgDist:</label>
-                <input type="number" id="PasTotPrgDist" name="PasTotPrgDist" min="0" step="0.01" required>
-            </div>
-            <div class="form-group">
-                <label for="PasDead" title="Dead-Ball passes made">PasDead:</label>
-                <input type="number" id="PasDead" name="PasDead" min="0" step="1" required>
-            </div>
-            <div class="form-group">
-                <label for="TouDefPen" title="Touches in defensive penalty Area">TouDefPen:</label>
-                <input type="number" id="TouDefPen" name="TouDefPen" min="0" step="1" required>
-            </div>
-            <div class="form-group">
-                <label for="PasMedCmp" title="Passes completed between 15 and 30 yards">PasMedCmp:</label>
-                <input type="number" id="PasMedCmp" name="PasMedCmp" min="0" step="1" required>
-            </div>
-            <div class="form-group">
-                <label for="TouAtt3rd" title="Touches in attacking third">TouAtt3rd:</label>
-                <input type="number" id="TouAtt3rd" name="TouAtt3rd" min="0" step="1" required>
-            </div>
-            <div class="form-group">
-                <label for="RecProg" title="Completed passes into the penalty area">RecProg:</label>
-                <input type="number" id="RecProg" name="RecProg" min="0" step="1" required>
-            </div>
-            <div class="form-group">
-                <label for="TouAttPen" title="Touches in attacking penalty area">TouAttPen:</label>
-                <input type="number" id="TouAttPen" name="TouAttPen" min="0" step="1" required>
-            </div>
-            <div class="form-group">
-                <label for="PasTotCmp" title="Total passes completed">PasTotCmp:</label>
-                <input type="number" id="PasTotCmp" name="PasTotCmp" min="0" step="1" required>
-            </div>
-            <div class="form-group">
-                <label for="TouMid3rd" title="Touches in middle third">TouMid3rd:</label>
-                <input type="number" id="TouMid3rd" name="TouMid3rd" min="0" step="1" required>
-            </div>
-            <div class="form-group">
-                <label for="Shots" title="Total shots taken (does not include penalty kicks)">Shots:</label>
-                <input type="number" id="Shots" name="Shots" min="0" step="1" required>
-            </div>
-            <button type="submit">Get Prediction</button>
-        </form>
-        <div id="result" class="result" style="display:none;"></div>
-    </div>
-    <script>
-        document.getElementById('prediction-form').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const formData = new FormData(e.target);
-            const data = Object.fromEntries(formData.entries());
+    <h1>Pitch Perfect Prediction</h1>
+    <form id="prediction-form">
+        <div class="form-group">
+            <label for="TouDef3rd">TouDef3rd:</label>
+            <input type="number" id="TouDef3rd" name="TouDef3rd" min="0" step="any" required>
+            <div class="description">Touches in defensive third</div>
+        </div>
+        <div class="form-group">
+            <label for="TI">TI:</label>
+            <input type="number" id="TI" name="TI" min="0" step="any" required>
+            <div class="description">Throw Ins Taken</div>
+        </div>
+        <div class="form-group">
+            <label for="Clr">Clr:</label>
+            <input type="number" id="Clr" name="Clr" min="0" step="any" required>
+            <div class="description">Clearances made</div>
+        </div>
+        <div class="form-group">
+            <label for="PasTotPrgDist">PasTotPrgDist:</label>
+            <input type="number" id="PasTotPrgDist" name="PasTotPrgDist" min="0" step="any" required>
+            <div class="description">Total distance, in yards, that completed passes have traveled towards the opponent's goal</div>
+        </div>
+        <div class="form-group">
+            <label for="PasDead">PasDead:</label>
+            <input type="number" id="PasDead" name="PasDead" min="0" step="any" required>
+            <div class="description">Dead-Ball passes made</div>
+        </div>
+        <div class="form-group">
+            <label for="TouDefPen">TouDefPen:</label>
+            <input type="number" id="TouDefPen" name="TouDefPen" min="0" step="any" required>
+            <div class="description">Touches in defensive penalty Area</div>
+        </div>
+        <div class="form-group">
+            <label for="PasMedCmp">PasMedCmp:</label>
+            <input type="number" id="PasMedCmp" name="PasMedCmp" min="0" step="any" required>
+            <div class="description">Passes completed between 15 and 30 yards</div>
+        </div>
+        <div class="form-group">
+            <label for="TouAtt3rd">TouAtt3rd:</label>
+            <input type="number" id="TouAtt3rd" name="TouAtt3rd" min="0" step="any" required>
+            <div class="description">Touches in attacking third</div>
+        </div>
+        <div class="form-group">
+            <label for="RecProg">RecProg:</label>
+            <input type="number" id="RecProg" name="RecProg" min="0" step="any" required>
+            <div class="description">Completed passes into the penalty area</div>
+        </div>
+        <div class="form-group">
+            <label for="TouAttPen">TouAttPen:</label>
+            <input type="number" id="TouAttPen" name="TouAttPen" min="0" step="any" required>
+            <div class="description">Touches in attacking penalty area</div>
+        </div>
+        <div class="form-group">
+            <label for="PasTotCmp">PasTotCmp:</label>
+            <input type="number" id="PasTotCmp" name="PasTotCmp" min="0" step="any" required>
+            <div class="description">Total passes completed</div>
+        </div>
+        <div class="form-group">
+            <label for="TouMid3rd">TouMid3rd:</label>
+            <input type="number" id="TouMid3rd" name="TouMid3rd" min="0" step="any" required>
+            <div class="description">Touches in middle third</div>
+        </div>
+        <div class="form-group">
+            <label for="Shots">Shots:</label>
+            <input type="number" id="Shots" name="Shots" min="0" step="any" required>
+            <div class="description">Total shots taken (does not include penalty kicks)</div>
+        </div>
+        <input type="submit" value="Predict">
+    </form>
 
-            try {
-                const response = await fetch('/predict', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify([data])
-                });
-                const result = await response.json();
-                document.getElementById('result').style.display = 'block';
-                document.getElementById('result').textContent = `Prediction: ${result.predictions[0]}, Probability: ${result.predictions_proba[0]}`;
-            } catch (error) {
-                document.getElementById('result').style.display = 'block';
-                document.getElementById('result').textContent = 'Error: ' + error.message;
-            }
+    <script>
+        document.getElementById("prediction-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let formData = new FormData(this);
+            let jsonData = {};
+            formData.forEach((value, key) => { jsonData[key] = Number(value); });
+
+            fetch("/predict", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify([jsonData])
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert("Predictions: " + JSON.stringify(data.predictions) + "\nProbabilities: " + JSON.stringify(data.predictions_proba));
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
         });
     </script>
 </body>
