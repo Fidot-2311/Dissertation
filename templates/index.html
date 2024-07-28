@@ -7,16 +7,21 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #4CAF50; /* Green color for football field */
             margin: 0;
             padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
         .container {
             max-width: 600px;
-            margin: 50px auto;
+            width: 100%;
             background: #fff;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
         }
         h1 {
             text-align: center;
@@ -28,11 +33,14 @@
         label {
             display: block;
             margin-bottom: 5px;
+            font-weight: bold;
         }
         input[type="number"] {
             width: 100%;
-            padding: 8px;
+            padding: 10px;
             box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
         button {
             width: 100%;
@@ -41,6 +49,8 @@
             border: none;
             color: white;
             cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
         }
         button:hover {
             background-color: #0056b3;
@@ -50,6 +60,7 @@
             padding: 10px;
             background: #e7f7ff;
             border-left: 5px solid #007bff;
+            border-radius: 5px;
         }
     </style>
 </head>
