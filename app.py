@@ -8,6 +8,11 @@ model = joblib.load('best_xgboost_model.pkl')
 # Create a Flask app
 app = Flask(__name__)
 
+# Define the root route
+@app.route('/')
+def home():
+    return "Welcome to the Pitch Perfect Prediction API. Use the /predict endpoint to get predictions."
+
 # Define the predict route
 @app.route('/predict', methods=['POST'])
 def predict():
