@@ -4,60 +4,136 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pitch Perfect Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background: #e7f7ff;
+            border-left: 5px solid #007bff;
+        }
+    </style>
 </head>
 <body>
-    <h1>Pitch Perfect Prediction</h1>
-    <form id="prediction-form">
-        <label for="TouDef3rd">TouDef3rd:</label>
-        <input type="number" id="TouDef3rd" name="TouDef3rd"><br><br>
-        <label for="TI">TI:</label>
-        <input type="number" id="TI" name="TI"><br><br>
-        <label for="Clr">Clr:</label>
-        <input type="number" id="Clr" name="Clr"><br><br>
-        <label for="PasTotPrgDist">PasTotPrgDist:</label>
-        <input type="number" id="PasTotPrgDist" name="PasTotPrgDist"><br><br>
-        <label for="PasDead">PasDead:</label>
-        <input type="number" id="PasDead" name="PasDead"><br><br>
-        <label for="TouDefPen">TouDefPen:</label>
-        <input type="number" id="TouDefPen" name="TouDefPen"><br><br>
-        <label for="PasMedCmp">PasMedCmp:</label>
-        <input type="number" id="PasMedCmp" name="PasMedCmp"><br><br>
-        <label for="TouAtt3rd">TouAtt3rd:</label>
-        <input type="number" id="TouAtt3rd" name="TouAtt3rd"><br><br>
-        <label for="RecProg">RecProg:</label>
-        <input type="number" id="RecProg" name="RecProg"><br><br>
-        <label for="TouAttPen">TouAttPen:</label>
-        <input type="number" id="TouAttPen" name="TouAttPen"><br><br>
-        <label for="PasTotCmp">PasTotCmp:</label>
-        <input type="number" id="PasTotCmp" name="PasTotCmp"><br><br>
-        <label for="TouMid3rd">TouMid3rd:</label>
-        <input type="number" id="TouMid3rd" name="TouMid3rd"><br><br>
-        <label for="Shots">Shots:</label>
-        <input type="number" id="Shots" name="Shots"><br><br>
-        <input type="submit" value="Predict">
-    </form>
-    <div id="results"></div>
-
+    <div class="container">
+        <h1>Pitch Perfect Prediction</h1>
+        <form id="prediction-form">
+            <div class="form-group">
+                <label for="TouDef3rd">TouDef3rd:</label>
+                <input type="number" id="TouDef3rd" name="TouDef3rd" required>
+            </div>
+            <div class="form-group">
+                <label for="TI">TI:</label>
+                <input type="number" id="TI" name="TI" required>
+            </div>
+            <div class="form-group">
+                <label for="Clr">Clr:</label>
+                <input type="number" id="Clr" name="Clr" required>
+            </div>
+            <div class="form-group">
+                <label for="PasTotPrgDist">PasTotPrgDist:</label>
+                <input type="number" id="PasTotPrgDist" name="PasTotPrgDist" required>
+            </div>
+            <div class="form-group">
+                <label for="PasDead">PasDead:</label>
+                <input type="number" id="PasDead" name="PasDead" required>
+            </div>
+            <div class="form-group">
+                <label for="TouDefPen">TouDefPen:</label>
+                <input type="number" id="TouDefPen" name="TouDefPen" required>
+            </div>
+            <div class="form-group">
+                <label for="PasMedCmp">PasMedCmp:</label>
+                <input type="number" id="PasMedCmp" name="PasMedCmp" required>
+            </div>
+            <div class="form-group">
+                <label for="TouAtt3rd">TouAtt3rd:</label>
+                <input type="number" id="TouAtt3rd" name="TouAtt3rd" required>
+            </div>
+            <div class="form-group">
+                <label for="RecProg">RecProg:</label>
+                <input type="number" id="RecProg" name="RecProg" required>
+            </div>
+            <div class="form-group">
+                <label for="TouAttPen">TouAttPen:</label>
+                <input type="number" id="TouAttPen" name="TouAttPen" required>
+            </div>
+            <div class="form-group">
+                <label for="PasTotCmp">PasTotCmp:</label>
+                <input type="number" id="PasTotCmp" name="PasTotCmp" required>
+            </div>
+            <div class="form-group">
+                <label for="TouMid3rd">TouMid3rd:</label>
+                <input type="number" id="TouMid3rd" name="TouMid3rd" required>
+            </div>
+            <div class="form-group">
+                <label for="Shots">Shots:</label>
+                <input type="number" id="Shots" name="Shots" required>
+            </div>
+            <button type="submit">Get Prediction</button>
+        </form>
+        <div id="result" class="result" style="display:none;"></div>
+    </div>
     <script>
-        document.getElementById('prediction-form').addEventListener('submit', async function(event) {
-            event.preventDefault();
+        document.getElementById('prediction-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
 
-            const formData = new FormData(event.target);
-            const formObject = {};
-            formData.forEach((value, key) => {
-                formObject[key] = parseFloat(value);
-            });
-
-            const response = await fetch('/predict', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify([formObject]),
-            });
-
-            const result = await response.json();
-            document.getElementById('results').innerText = JSON.stringify(result, null, 2);
+            try {
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify([data])
+                });
+                const result = await response.json();
+                document.getElementById('result').style.display = 'block';
+                document.getElementById('result').textContent = `Prediction: ${result.predictions[0]}, Probability: ${result.predictions_proba[0]}`;
+            } catch (error) {
+                document.getElementById('result').style.display = 'block';
+                document.getElementById('result').textContent = 'Error: ' + error.message;
+            }
         });
     </script>
 </body>
