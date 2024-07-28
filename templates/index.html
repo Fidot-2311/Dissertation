@@ -34,6 +34,7 @@
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
+            position: relative;
         }
         input[type="number"] {
             width: 100%;
@@ -69,55 +70,55 @@
         <h1>Pitch Perfect Prediction</h1>
         <form id="prediction-form">
             <div class="form-group">
-                <label for="TouDef3rd">TouDef3rd:</label>
+                <label for="TouDef3rd" title="Touches in defensive third">TouDef3rd:</label>
                 <input type="number" id="TouDef3rd" name="TouDef3rd" min="0" step="1" required>
             </div>
             <div class="form-group">
-                <label for="TI">TI:</label>
+                <label for="TI" title="Throw Ins Taken">TI:</label>
                 <input type="number" id="TI" name="TI" min="0" step="1" required>
             </div>
             <div class="form-group">
-                <label for="Clr">Clr:</label>
+                <label for="Clr" title="Clearances made">Clr:</label>
                 <input type="number" id="Clr" name="Clr" min="0" step="1" required>
             </div>
             <div class="form-group">
-                <label for="PasTotPrgDist">PasTotPrgDist:</label>
+                <label for="PasTotPrgDist" title="Total distance, in yards, that completed passes have traveled towards the opponent's goal">PasTotPrgDist:</label>
                 <input type="number" id="PasTotPrgDist" name="PasTotPrgDist" min="0" step="0.01" required>
             </div>
             <div class="form-group">
-                <label for="PasDead">PasDead:</label>
+                <label for="PasDead" title="Dead-Ball passes made">PasDead:</label>
                 <input type="number" id="PasDead" name="PasDead" min="0" step="1" required>
             </div>
             <div class="form-group">
-                <label for="TouDefPen">TouDefPen:</label>
+                <label for="TouDefPen" title="Touches in defensive penalty Area">TouDefPen:</label>
                 <input type="number" id="TouDefPen" name="TouDefPen" min="0" step="1" required>
             </div>
             <div class="form-group">
-                <label for="PasMedCmp">PasMedCmp:</label>
+                <label for="PasMedCmp" title="Passes completed between 15 and 30 yards">PasMedCmp:</label>
                 <input type="number" id="PasMedCmp" name="PasMedCmp" min="0" step="1" required>
             </div>
             <div class="form-group">
-                <label for="TouAtt3rd">TouAtt3rd:</label>
+                <label for="TouAtt3rd" title="Touches in attacking third">TouAtt3rd:</label>
                 <input type="number" id="TouAtt3rd" name="TouAtt3rd" min="0" step="1" required>
             </div>
             <div class="form-group">
-                <label for="RecProg">RecProg:</label>
+                <label for="RecProg" title="Completed passes into the penalty area">RecProg:</label>
                 <input type="number" id="RecProg" name="RecProg" min="0" step="1" required>
             </div>
             <div class="form-group">
-                <label for="TouAttPen">TouAttPen:</label>
+                <label for="TouAttPen" title="Touches in attacking penalty area">TouAttPen:</label>
                 <input type="number" id="TouAttPen" name="TouAttPen" min="0" step="1" required>
             </div>
             <div class="form-group">
-                <label for="PasTotCmp">PasTotCmp:</label>
+                <label for="PasTotCmp" title="Total passes completed">PasTotCmp:</label>
                 <input type="number" id="PasTotCmp" name="PasTotCmp" min="0" step="1" required>
             </div>
             <div class="form-group">
-                <label for="TouMid3rd">TouMid3rd:</label>
+                <label for="TouMid3rd" title="Touches in middle third">TouMid3rd:</label>
                 <input type="number" id="TouMid3rd" name="TouMid3rd" min="0" step="1" required>
             </div>
             <div class="form-group">
-                <label for="Shots">Shots:</label>
+                <label for="Shots" title="Total shots taken (does not include penalty kicks)">Shots:</label>
                 <input type="number" id="Shots" name="Shots" min="0" step="1" required>
             </div>
             <button type="submit">Get Prediction</button>
