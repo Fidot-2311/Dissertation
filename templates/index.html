@@ -117,68 +117,68 @@
     <form id="prediction-form">
         <div class="form-group">
             <label for="TouDef3rd">TouDef3rd:</label>
-            <input type="number" id="TouDef3rd" name="TouDef3rd" min="0" step="any" required>
-            <div class="description">Touches in defensive third</div>
+            <input type="number" id="TouDef3rd" name="TouDef3rd" min="0.01" step="any" required>
+            <div class="description">Touches in defensive third (must be greater than 0)</div>
         </div>
         <div class="form-group">
             <label for="TI">TI:</label>
-            <input type="number" id="TI" name="TI" min="0" step="any" required>
-            <div class="description">Throw Ins Taken</div>
+            <input type="number" id="TI" name="TI" min="0.01" step="any" required>
+            <div class="description">Throw Ins Taken (must be greater than 0)</div>
         </div>
         <div class="form-group">
             <label for="Clr">Clr:</label>
-            <input type="number" id="Clr" name="Clr" min="0" step="any" required>
-            <div class="description">Clearances made</div>
+            <input type="number" id="Clr" name="Clr" min="0.01" step="any" required>
+            <div class="description">Clearances made (must be greater than 0)</div>
         </div>
         <div class="form-group">
             <label for="PasTotPrgDist">PasTotPrgDist:</label>
-            <input type="number" id="PasTotPrgDist" name="PasTotPrgDist" min="0" step="any" required>
-            <div class="description">Total distance, in yards, that completed passes have traveled towards the opponent's goal</div>
+            <input type="number" id="PasTotPrgDist" name="PasTotPrgDist" min="0.01" step="any" required>
+            <div class="description">Total distance, in yards, that completed passes have traveled towards the opponent's goal (must be greater than 0)</div>
         </div>
         <div class="form-group">
             <label for="PasDead">PasDead:</label>
-            <input type="number" id="PasDead" name="PasDead" min="0" step="any" required>
-            <div class="description">Dead-Ball passes made</div>
+            <input type="number" id="PasDead" name="PasDead" min="0.01" step="any" required>
+            <div class="description">Dead-Ball passes made (must be greater than 0)</div>
         </div>
         <div class="form-group">
             <label for="TouDefPen">TouDefPen:</label>
-            <input type="number" id="TouDefPen" name="TouDefPen" min="0" step="any" required>
-            <div class="description">Touches in defensive penalty Area</div>
+            <input type="number" id="TouDefPen" name="TouDefPen" min="0.01" step="any" required>
+            <div class="description">Touches in defensive penalty Area (must be greater than 0)</div>
         </div>
         <div class="form-group">
             <label for="PasMedCmp">PasMedCmp:</label>
-            <input type="number" id="PasMedCmp" name="PasMedCmp" min="0" step="any" required>
-            <div class="description">Passes completed between 15 and 30 yards</div>
+            <input type="number" id="PasMedCmp" name="PasMedCmp" min="0.01" step="any" required>
+            <div class="description">Passes completed between 15 and 30 yards (must be greater than 0)</div>
         </div>
         <div class="form-group">
             <label for="TouAtt3rd">TouAtt3rd:</label>
-            <input type="number" id="TouAtt3rd" name="TouAtt3rd" min="0" step="any" required>
-            <div class="description">Touches in attacking third</div>
+            <input type="number" id="TouAtt3rd" name="TouAtt3rd" min="0.01" step="any" required>
+            <div class="description">Touches in attacking third (must be greater than 0)</div>
         </div>
         <div class="form-group">
             <label for="RecProg">RecProg:</label>
-            <input type="number" id="RecProg" name="RecProg" min="0" step="any" required>
-            <div class="description">Completed passes into the penalty area</div>
+            <input type="number" id="RecProg" name="RecProg" min="0.01" step="any" required>
+            <div class="description">Completed passes into the penalty area (must be greater than 0)</div>
         </div>
         <div class="form-group">
             <label for="TouAttPen">TouAttPen:</label>
-            <input type="number" id="TouAttPen" name="TouAttPen" min="0" step="any" required>
-            <div class="description">Touches in attacking penalty area</div>
+            <input type="number" id="TouAttPen" name="TouAttPen" min="0.01" step="any" required>
+            <div class="description">Touches in attacking penalty area (must be greater than 0)</div>
         </div>
         <div class="form-group">
             <label for="PasTotCmp">PasTotCmp:</label>
-            <input type="number" id="PasTotCmp" name="PasTotCmp" min="0" step="any" required>
-            <div class="description">Total passes completed</div>
+            <input type="number" id="PasTotCmp" name="PasTotCmp" min="0.01" step="any" required>
+            <div class="description">Total passes completed (must be greater than 0)</div>
         </div>
         <div class="form-group">
             <label for="TouMid3rd">TouMid3rd:</label>
-            <input type="number" id="TouMid3rd" name="TouMid3rd" min="0" step="any" required>
-            <div class="description">Touches in middle third</div>
+            <input type="number" id="TouMid3rd" name="TouMid3rd" min="0.01" step="any" required>
+            <div class="description">Touches in middle third (must be greater than 0)</div>
         </div>
         <div class="form-group">
             <label for="Shots">Shots:</label>
-            <input type="number" id="Shots" name="Shots" min="0" step="any" required>
-            <div class="description">Total shots taken (does not include penalty kicks)</div>
+            <input type="number" id="Shots" name="Shots" min="0.01" step="any" required>
+            <div class="description">Total shots taken (does not include penalty kicks) (must be greater than 0)</div>
         </div>
         <button type="submit" class="football-btn"></button>
         <button type="button" id="reset-btn">Reset</button>
@@ -191,7 +191,14 @@
             event.preventDefault();
             let formData = new FormData(this);
             let jsonData = {};
-            formData.forEach((value, key) => { jsonData[key] = Number(value); });
+            formData.forEach((value, key) => { 
+                let numberValue = Number(value);
+                if (numberValue <= 0) {
+                    alert(`${key} must be greater than 0.`);
+                    return;
+                }
+                jsonData[key] = numberValue; 
+            });
 
             document.getElementById("spinner").style.display = "block"; // Show spinner
             document.getElementById("result").innerHTML = "";
