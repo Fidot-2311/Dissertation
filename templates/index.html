@@ -46,7 +46,8 @@
         }
         .football-btn {
             background: url('https://i.imgur.com/jqmqeZV.png') no-repeat center center;
-            background-size: cover;
+            background-size: contain;
+            background-color: #fff; /* White background to ensure image visibility */
             width: 80px; /* Adjust size for visibility */
             height: 80px; /* Adjust size for visibility */
             border: 2px solid #FFC107; /* Added border to make it stand out */
@@ -55,8 +56,11 @@
             margin: auto;
             display: block;
             margin-top: 20px;
-            background-color: #000; /* Black background color */
-            background-blend-mode: multiply; /* Ensure the background color blends with the image */
+            border: none; /* Remove default border */
+            outline: none; /* Remove default focus outline */
+        }
+        .football-btn:hover {
+            background-color: #fff; /* Ensure white background on hover */
         }
         button {
             background-color: #FFC107; /* Updated color for better visibility */
