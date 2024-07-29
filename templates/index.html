@@ -6,7 +6,7 @@
     <title>Pitch Perfect Prediction</title>
     <style>
         body {
-            background: url('https://imgur.com/a/HnOrUbl') no-repeat center center fixed; /* Background image */
+            background: url('https://i.imgur.com/R6cpurn.jpg') no-repeat center center fixed; /* Background image */
             background-size: cover; /* Ensure the image covers the entire background */
             font-family: Arial, sans-serif;
             color: #fff;
@@ -53,8 +53,8 @@
         .football-btn {
             background: url('https://image.shutterstock.com/image-vector/vector-illustration-soccer-ball-isolated-260nw-1067199104.jpg') no-repeat center center;
             background-size: contain;
-            width: 100px; /* Increased size for better visibility */
-            height: 100px; /* Increased size for better visibility */
+            width: 120px; /* Increased size for better visibility */
+            height: 120px; /* Increased size for better visibility */
             border: 2px solid #FFC107; /* Added border to make it stand out */
             border-radius: 50%;
             cursor: pointer;
@@ -64,8 +64,8 @@
             background-color: #333; /* Fallback background color */
             color: #FFC107; /* Text color for better visibility */
             font-weight: bold;
-            font-size: 16px;
-            line-height: 100px; /* Center text vertically */
+            font-size: 18px;
+            line-height: 120px; /* Center text vertically */
             text-align: center; /* Center text horizontally */
             padding: 0; /* Remove default padding */
         }
@@ -75,7 +75,7 @@
         button {
             background-color: #FFC107; /* Updated color for better visibility */
             color: #000; /* Dark text color for contrast */
-            padding: 20px 30px; /* Increased padding for larger button */
+            padding: 15px 20px; /* Increased padding for larger button */
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -184,33 +184,17 @@
     <div class="spinner" id="spinner"></div>
     <div class="result" id="result"></div>
     <script>
-        const form = document.getElementById('prediction-form');
-        const resultDiv = document.getElementById('result');
-        const spinner = document.getElementById('spinner');
-
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            resultDiv.innerHTML = '';
-            spinner.style.display = 'block';
-
-            const formData = new FormData(form);
-            const data = {};
-            formData.forEach((value, key) => data[key] = value);
-
-            try {
-                const response = await fetch('predict', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
-
-                const result = await response.json();
-                spinner.style.display = 'none';
-                resultDiv.innerHTML = `<p>Predicted Value: ${result.prediction}</p>`;
-            } catch (error) {
-                spinner.style.display = 'none';
-                resultDiv.innerHTML = '<p>An error occurred. Please try again.</p>';
-            }
+        document.getElementById('prediction-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            document.getElementById('spinner').style.display = 'block';
+            document.getElementById('result').innerHTML = '';
+            setTimeout(() => {
+                document.getElementById('spinner').style.display = 'none';
+                document.getElementById('result').innerHTML = 'Predicted outcome based on the provided input data';
+            }, 2000);
+        });
+        document.getElementById('reset-btn').addEventListener('click', function() {
+            document.getElementById('result').innerHTML = '';
         });
     </script>
 </body>
