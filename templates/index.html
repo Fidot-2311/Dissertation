@@ -14,10 +14,28 @@
         h1 {
             text-align: center;
         }
-        form {
-            max-width: 600px;
+        .container {
+            max-width: 800px;
             margin: auto;
-            background-color: #fff; /* Form background white for contrast */
+        }
+        .home-link {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .home-link a {
+            color: #FFC107;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #1B5E20; /* Darker green for button */
+            display: inline-block;
+        }
+        .home-link a:hover {
+            background-color: #2E7D32; /* Slightly lighter green on hover */
+        }
+        form {
+            background-color: #1B5E20; /* Darker green background for form */
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added shadow for depth */
@@ -26,8 +44,8 @@
             margin-bottom: 20px;
             padding: 15px;
             border-radius: 5px;
-            background-color: #fff; /* White background for each form field */
-            border: 1px solid #e0e0e0; /* Light border for subtle separation */
+            background-color: #fff; /* White background for column boxes */
+            border: 1px solid #4CAF50; /* Green border */
         }
         label {
             font-weight: bold;
@@ -52,8 +70,8 @@
         .football-btn {
             background: url('https://image.shutterstock.com/image-vector/vector-illustration-soccer-ball-isolated-260nw-1067199104.jpg') no-repeat center center;
             background-size: contain;
-            width: 60px; /* Increased size for better visibility */
-            height: 60px; /* Increased size for better visibility */
+            width: 80px; /* Increased size for better visibility */
+            height: 80px; /* Increased size for better visibility */
             border: 2px solid #FFC107; /* Added border to make it stand out */
             border-radius: 50%;
             cursor: pointer;
@@ -63,8 +81,8 @@
             background-color: #333; /* Fallback background color */
             color: #FFC107; /* Text color for better visibility */
             font-weight: bold;
-            font-size: 14px;
-            line-height: 60px; /* Center text vertically */
+            font-size: 16px;
+            line-height: 80px; /* Center text vertically */
             text-align: center; /* Center text horizontally */
             padding: 0; /* Remove default padding */
         }
@@ -83,6 +101,10 @@
         }
         button:hover {
             background-color: #FFEB3B; /* Hover effect */
+        }
+        #reset-btn {
+            font-size: 14px; /* Smaller font size */
+            padding: 5px 10px; /* Smaller padding */
         }
         .result {
             margin-top: 20px;
@@ -108,78 +130,83 @@
     </style>
 </head>
 <body>
-    <h1>Pitch Perfect Prediction</h1>
-    <form id="prediction-form">
-        <div class="form-group">
-            <label for="TouDef3rd">TouDef3rd:</label>
-            <input type="number" id="TouDef3rd" name="TouDef3rd" min="0" step="any" required>
-            <div class="description">Touches in defensive third</div>
+    <div class="container">
+        <div class="home-link">
+            <a href="index.html">Home</a>
         </div>
-        <div class="form-group">
-            <label for="TI">TI:</label>
-            <input type="number" id="TI" name="TI" min="0" step="any" required>
-            <div class="description">Throw Ins Taken</div>
-        </div>
-        <div class="form-group">
-            <label for="Clr">Clr:</label>
-            <input type="number" id="Clr" name="Clr" min="0" step="any" required>
-            <div class="description">Clearances made</div>
-        </div>
-        <div class="form-group">
-            <label for="PasTotPrgDist">PasTotPrgDist:</label>
-            <input type="number" id="PasTotPrgDist" name="PasTotPrgDist" min="0" step="any" required>
-            <div class="description">Total distance, in yards, that completed passes have traveled towards the opponent's goal</div>
-        </div>
-        <div class="form-group">
-            <label for="PasDead">PasDead:</label>
-            <input type="number" id="PasDead" name="PasDead" min="0" step="any" required>
-            <div class="description">Dead-Ball passes made</div>
-        </div>
-        <div class="form-group">
-            <label for="TouDefPen">TouDefPen:</label>
-            <input type="number" id="TouDefPen" name="TouDefPen" min="0" step="any" required>
-            <div class="description">Touches in defensive penalty Area</div>
-        </div>
-        <div class="form-group">
-            <label for="PasMedCmp">PasMedCmp:</label>
-            <input type="number" id="PasMedCmp" name="PasMedCmp" min="0" step="any" required>
-            <div class="description">Passes completed between 15 and 30 yards</div>
-        </div>
-        <div class="form-group">
-            <label for="TouAtt3rd">TouAtt3rd:</label>
-            <input type="number" id="TouAtt3rd" name="TouAtt3rd" min="0" step="any" required>
-            <div class="description">Touches in attacking third</div>
-        </div>
-        <div class="form-group">
-            <label for="RecProg">RecProg:</label>
-            <input type="number" id="RecProg" name="RecProg" min="0" step="any" required>
-            <div class="description">Completed passes into the penalty area</div>
-        </div>
-        <div class="form-group">
-            <label for="TouAttPen">TouAttPen:</label>
-            <input type="number" id="TouAttPen" name="TouAttPen" min="0" step="any" required>
-            <div class="description">Touches in attacking penalty area</div>
-        </div>
-        <div class="form-group">
-            <label for="PasTotCmp">PasTotCmp:</label>
-            <input type="number" id="PasTotCmp" name="PasTotCmp" min="0" step="any" required>
-            <div class="description">Total passes completed</div>
-        </div>
-        <div class="form-group">
-            <label for="TouMid3rd">TouMid3rd:</label>
-            <input type="number" id="TouMid3rd" name="TouMid3rd" min="0" step="any" required>
-            <div class="description">Touches in middle third</div>
-        </div>
-        <div class="form-group">
-            <label for="Shots">Shots:</label>
-            <input type="number" id="Shots" name="Shots" min="0" step="any" required>
-            <div class="description">Total shots taken (does not include penalty kicks)</div>
-        </div>
-        <button type="submit" class="football-btn"></button>
-        <button type="button" id="reset-btn">Reset</button>
-    </form>
-    <div class="spinner" id="spinner"></div>
-    <div class="result" id="result"></div>
+        <h1>Pitch Perfect Prediction</h1>
+        <form id="prediction-form">
+            <div class="form-group">
+                <label for="TouDef3rd">TouDef3rd:</label>
+                <input type="number" id="TouDef3rd" name="TouDef3rd" min="0" step="any" required>
+                <div class="description">Touches in defensive third</div>
+            </div>
+            <div class="form-group">
+                <label for="TI">TI:</label>
+                <input type="number" id="TI" name="TI" min="0" step="any" required>
+                <div class="description">Throw Ins Taken</div>
+            </div>
+            <div class="form-group">
+                <label for="Clr">Clr:</label>
+                <input type="number" id="Clr" name="Clr" min="0" step="any" required>
+                <div class="description">Clearances made</div>
+            </div>
+            <div class="form-group">
+                <label for="PasTotPrgDist">PasTotPrgDist:</label>
+                <input type="number" id="PasTotPrgDist" name="PasTotPrgDist" min="0" step="any" required>
+                <div class="description">Total distance, in yards, that completed passes have traveled towards the opponent's goal</div>
+            </div>
+            <div class="form-group">
+                <label for="PasDead">PasDead:</label>
+                <input type="number" id="PasDead" name="PasDead" min="0" step="any" required>
+                <div class="description">Dead-Ball passes made</div>
+            </div>
+            <div class="form-group">
+                <label for="TouDefPen">TouDefPen:</label>
+                <input type="number" id="TouDefPen" name="TouDefPen" min="0" step="any" required>
+                <div class="description">Touches in defensive penalty Area</div>
+            </div>
+            <div class="form-group">
+                <label for="PasMedCmp">PasMedCmp:</label>
+                <input type="number" id="PasMedCmp" name="PasMedCmp" min="0" step="any" required>
+                <div class="description">Passes completed between 15 and 30 yards</div>
+            </div>
+            <div class="form-group">
+                <label for="TouAtt3rd">TouAtt3rd:</label>
+                <input type="number" id="TouAtt3rd" name="TouAtt3rd" min="0" step="any" required>
+                <div class="description">Touches in attacking third</div>
+            </div>
+            <div class="form-group">
+                <label for="RecProg">RecProg:</label>
+                <input type="number" id="RecProg" name="RecProg" min="0" step="any" required>
+                <div class="description">Completed passes into the penalty area</div>
+            </div>
+            <div class="form-group">
+                <label for="TouAttPen">TouAttPen:</label>
+                <input type="number" id="TouAttPen" name="TouAttPen" min="0" step="any" required>
+                <div class="description">Touches in attacking penalty area</div>
+            </div>
+            <div class="form-group">
+                <label for="PasTotCmp">PasTotCmp:</label>
+                <input type="number" id="PasTotCmp" name="PasTotCmp" min="0" step="any" required>
+                <div class="description">Total passes completed</div>
+            </div>
+            <div class="form-group">
+                <label for="TouMid3rd">TouMid3rd:</label>
+                <input type="number" id="TouMid3rd" name="TouMid3rd" min="0" step="any" required>
+                <div class="description">Touches in middle third</div>
+            </div>
+            <div class="form-group">
+                <label for="Shots">Shots:</label>
+                <input type="number" id="Shots" name="Shots" min="0" step="any" required>
+                <div class="description">Total shots taken (does not include penalty kicks)</div>
+            </div>
+            <button type="submit" class="football-btn"></button>
+            <button type="button" id="reset-btn">Reset</button>
+        </form>
+        <div class="spinner" id="spinner"></div>
+        <div class="result" id="result"></div>
+    </div>
 
     <script>
         document.getElementById("prediction-form").addEventListener("submit", function(event) {
