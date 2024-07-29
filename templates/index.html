@@ -6,7 +6,8 @@
     <title>Pitch Perfect Prediction</title>
     <style>
         body {
-            background-color: #4CAF50; /* Green background like a football field */
+            background: url('https://i.imgur.com/R6cpurn.jpg') no-repeat center center fixed; /* Background image */
+            background-size: cover; /* Ensure the image covers the entire background */
             font-family: Arial, sans-serif;
             color: #fff;
             padding: 20px;
@@ -29,6 +30,7 @@
             font-weight: bold;
             display: block;
             margin-bottom: 5px;
+            color: #fff; /* White color for labels */
         }
         .description {
             font-size: 12px;
@@ -44,21 +46,25 @@
             border-radius: 4px;
         }
         .football-btn {
-            background: url('https://image.shutterstock.com/image-vector/vector-illustration-soccer-ball-isolated-260nw-1067199104.jpg') no-repeat center center;
-            background-size: contain;
-            width: 50px;
-            height: 50px;
-            border: none;
+            background: url('https://i.imgur.com/jqmqeZV.png') no-repeat center center;
+            background-size: cover;
+            width: 80px; /* Adjust size for visibility */
+            height: 80px; /* Adjust size for visibility */
+            border: 2px solid #FFC107; /* Added border to make it stand out */
             border-radius: 50%;
             cursor: pointer;
             margin: auto;
             display: block;
             margin-top: 20px;
+            background-color: #fff; /* Fallback background color */
+        }
+        .football-btn::before {
+            content: ""; /* Removed the "Predict" text */
         }
         button {
-            background-color: #1B5E20; /* Darker button for better visibility */
-            color: white;
-            padding: 10px 15px;
+            background-color: #FFC107; /* Updated color for better visibility */
+            color: #000; /* Dark text color for contrast */
+            padding: 15px 20px; /* Increased padding for larger button */
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -66,7 +72,15 @@
             margin-top: 10px;
         }
         button:hover {
-            background-color: #66BB6A; /* Hover effect */
+            background-color: #FFEB3B; /* Hover effect */
+        }
+        #reset-btn {
+            font-size: 12px; /* Smaller font size */
+            padding: 5px 10px; /* Smaller padding */
+            width: auto; /* Adjust width to fit text */
+            display: block;
+            margin: 20px auto; /* Center the reset button */
+            background-color: #FF5722; /* Different color for reset button */
         }
         .result {
             margin-top: 20px;
@@ -174,7 +188,7 @@
             document.getElementById("spinner").style.display = "block"; // Show spinner
             document.getElementById("result").innerHTML = "";
 
-            fetch("/predict", {
+            fetch("https://pitch-perfect-mbly.onrender.com/predict", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify([jsonData])
