@@ -6,7 +6,8 @@
     <title>Pitch Perfect Prediction</title>
     <style>
         body {
-            background-color: #4CAF50; /* Green background like a football field */
+            background: url('https://imgur.com/a/HnOrUbl') no-repeat center center fixed; /* Background image */
+            background-size: cover; /* Ensure the image covers the entire background */
             font-family: Arial, sans-serif;
             color: #fff;
             padding: 20px;
@@ -26,18 +27,18 @@
             margin-bottom: 20px;
             padding: 15px;
             border-radius: 5px;
-            background-color: #fff; /* White background for form groups */
+            background-color: #f2f2f2; /* Light grey background for form groups */
             border: 1px solid #4CAF50; /* Green border */
         }
         label {
             font-weight: bold;
             display: block;
             margin-bottom: 5px;
-            color: #4CAF50; /* Green color for labels */
+            color: #1B5E20; /* Darker green color for labels */
         }
         .description {
             font-size: 12px;
-            color: #4CAF50; /* Green color for description text */
+            color: #1B5E20; /* Darker green color for description text */
             margin-top: 10px; /* Moved down to avoid overlap */
         }
         input[type="number"] {
@@ -46,7 +47,7 @@
             box-sizing: border-box;
             border: 1px solid #ccc;
             border-radius: 4px;
-            background-color: #f9f9f9; /* Light background for input fields */
+            background-color: #fff; /* White background for input fields */
             color: #333; /* Dark text color for readability */
         }
         .football-btn {
@@ -74,7 +75,7 @@
         button {
             background-color: #FFC107; /* Updated color for better visibility */
             color: #000; /* Dark text color for contrast */
-            padding: 10px 15px;
+            padding: 20px 30px; /* Increased padding for larger button */
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -177,61 +178,39 @@
             <input type="number" id="TouMid3rd" name="TouMid3rd" min="0" step="any" required>
             <div class="description">Touches in middle third</div>
         </div>
-        <div class="form-group">
-            <label for="Shots">Shots:</label>
-            <input type="number" id="Shots" name="Shots" min="0" step="any" required>
-            <div class="description">Total shots taken (does not include penalty kicks)</div>
-        </div>
         <button type="submit" class="football-btn"></button>
-        <button type="button" id="reset-btn">Reset</button>
+        <button type="reset" id="reset-btn">Reset</button>
     </form>
     <div class="spinner" id="spinner"></div>
     <div class="result" id="result"></div>
-
     <script>
-        document.getElementById("prediction-form").addEventListener("submit", function(event) {
-            event.preventDefault();
-            let formData = new FormData(this);
-            let jsonData = {};
-            formData.forEach((value, key) => { jsonData[key] = Number(value); });
+        const form = document.getElementById('prediction-form');
+        const resultDiv = document.getElementById('result');
+        const spinner = document.getElementById('spinner');
 
-            document.getElementById("spinner").style.display = "block"; // Show spinner
-            document.getElementById("result").innerHTML = "";
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            resultDiv.innerHTML = '';
+            spinner.style.display = 'block';
 
-            fetch("/predict", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify([jsonData])
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById("spinner").style.display = "none"; // Hide spinner
-                let resultDiv = document.getElementById("result");
-                let predictions = data.predictions;
-                let probabilities = data.predictions_proba;
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => data[key] = value);
 
-                // Class labels
-                let classLabels = ["Defender", "Forward", "Midfielder"];
-
-                let predictionHTML = "<h3>Prediction</h3><p>" + classLabels[predictions[0]] + "</p>";
-                let probabilitiesHTML = "<h3>Probabilities</h3><ul>";
-                probabilities[0].forEach((prob, index) => {
-                    probabilitiesHTML += `<li>${classLabels[index]}: ${(prob * 100).toFixed(2)}%</li>`;
+            try {
+                const response = await fetch('predict', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
                 });
-                probabilitiesHTML += "</ul>";
 
-                resultDiv.innerHTML = predictionHTML + probabilitiesHTML;
-            })
-            .catch(error => {
-                document.getElementById("spinner").style.display = "none"; // Hide spinner
-                console.error("Error:", error);
-            });
-        });
-
-        document.getElementById("reset-btn").addEventListener("click", function() {
-            document.getElementById("prediction-form").reset(); // Reset form fields
-            document.getElementById("result").innerHTML = ""; // Clear previous results
-            document.getElementById("spinner").style.display = "none"; // Hide spinner
+                const result = await response.json();
+                spinner.style.display = 'none';
+                resultDiv.innerHTML = `<p>Predicted Value: ${result.prediction}</p>`;
+            } catch (error) {
+                spinner.style.display = 'none';
+                resultDiv.innerHTML = '<p>An error occurred. Please try again.</p>';
+            }
         });
     </script>
 </body>
