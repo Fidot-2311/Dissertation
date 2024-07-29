@@ -51,15 +51,18 @@
             color: #333; /* Dark text color for readability */
         }
         .football-btn {
-            background: url('https://i.imgur.com/rGSEBFp.png') no-repeat center center;
-            background-size: contain;
-            width: 120px; /* Size of the button */
-            height: 120px; /* Size of the button */
-            border: none; /* No border */
+            width: 120px; /* Width of the button */
+            height: 120px; /* Height of the button */
+            border-radius: 50%; /* Make the button circular */
+            background-color: #fff; /* White background for the button */
+            border: 2px solid #4CAF50; /* Green border */
+            background: url('https://i.imgur.com/rGSEBFp.png') no-repeat center center; /* Image inside the button */
+            background-size: 80%; /* Ensure the image fits well inside */
             cursor: pointer;
             margin: auto;
             display: block;
             margin-top: 20px;
+            position: relative; /* For positioning content if needed */
         }
         button {
             background-color: #FFC107; /* Updated color for better visibility */
@@ -177,13 +180,27 @@
             event.preventDefault();
             document.getElementById('spinner').style.display = 'block';
             document.getElementById('result').innerHTML = '';
-            setTimeout(() => {
-                document.getElementById('spinner').style.display = 'none';
-                document.getElementById('result').innerHTML = 'Predicted outcome based on the provided input data';
-            }, 2000);
-        });
-        document.getElementById('reset-btn').addEventListener('click', function() {
-            document.getElementById('result').innerHTML = '';
+
+            var formData = new FormData(this);
+            var data = {};
+            formData.forEach(function(value, key) {
+                data[key] = value;
+            });
+
+            fetch('predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }).then(response => response.json())
+              .then(result => {
+                  document.getElementById('spinner').style.display = 'none';
+                  document.getElementById('result').innerHTML = `<p>Predicted Value: ${result.prediction}</p>`;
+              }).catch(error => {
+                  document.getElementById('spinner').style.display = 'none';
+                  document.getElementById('result').innerHTML = '<p>An error occurred. Please try again.</p>';
+              });
         });
     </script>
 </body>
