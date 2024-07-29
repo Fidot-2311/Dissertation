@@ -17,7 +17,7 @@
         }
         form {
             background-color: #1B5E20; /* Darker green background for form */
-            padding: 20px;
+            padding: 15px; /* Reduced padding */
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added shadow for depth */
             max-width: 600px; /* Reduced width */
@@ -25,7 +25,7 @@
         }
         .form-group {
             margin-bottom: 10px; /* Reduced margin */
-            padding: 10px; /* Reduced padding */
+            padding: 8px; /* Reduced padding */
             border-radius: 5px;
             background-color: #f2f2f2; /* Light grey background for form groups */
             border: 1px solid #4CAF50; /* Green border */
@@ -42,8 +42,8 @@
             margin-top: 5px; /* Reduced margin to avoid overlap */
         }
         input[type="number"] {
-            width: 100%;
-            padding: 8px;
+            width: 95%; /* Thinner width */
+            padding: 6px; /* Reduced padding */
             box-sizing: border-box;
             border: 1px solid #ccc;
             border-radius: 4px;
@@ -51,8 +51,8 @@
             color: #333; /* Dark text color for readability */
         }
         .football-btn {
-            width: 80px; /* Smaller width for the button */
-            height: 80px; /* Smaller height for the button */
+            width: 60px; /* Smaller width for the button */
+            height: 60px; /* Smaller height for the button */
             border-radius: 50%; /* Make the button circular */
             background-color: #fff; /* White background for the button */
             border: 2px solid #4CAF50; /* Green border */
@@ -170,22 +170,25 @@
             <input type="number" id="TouMid3rd" name="TouMid3rd" min="0" step="any" required>
             <div class="description">Touches in middle third</div>
         </div>
+        <div class="form-group">
+            <label for="Shots">Shots:</label>
+            <input type="number" id="Shots" name="Shots" min="0" step="any" required>
+            <div class="description">Total number of shots</div>
+        </div>
         <button type="submit" class="football-btn"></button>
         <button type="reset" id="reset-btn">Reset</button>
     </form>
     <div class="spinner" id="spinner"></div>
     <div class="result" id="result"></div>
     <script>
-        document.getElementById('prediction-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            document.getElementById('spinner').style.display = 'block';
+        document.getElementById('prediction-form').addEventListener('submit', function (e) {
+            e.preventDefault();
             document.getElementById('result').innerHTML = '';
+            document.getElementById('spinner').style.display = 'block';
 
-            var formData = new FormData(this);
-            var data = {};
-            formData.forEach(function(value, key) {
-                data[key] = value;
-            });
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => data[key] = value);
 
             fetch('predict', {
                 method: 'POST',
