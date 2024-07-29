@@ -17,24 +17,27 @@
         form {
             max-width: 600px;
             margin: auto;
-            background-color: #2E7D32; /* Darker green for contrast */
+            background-color: #fff; /* Form background white for contrast */
             padding: 20px;
             border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added shadow for depth */
         }
         .form-group {
-            margin-bottom: 20px; /* Increased margin-bottom for better spacing */
-            background-color: #000; /* Black background for form fields */
-            padding: 15px; /* Padding inside the form field */
-            border-radius: 5px; /* Rounded corners for form field background */
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #fff; /* White background for each form field */
+            border: 1px solid #e0e0e0; /* Light border for subtle separation */
         }
         label {
             font-weight: bold;
             display: block;
             margin-bottom: 5px;
+            color: #4CAF50; /* Green color for labels */
         }
         .description {
             font-size: 12px;
-            color: #ccc;
+            color: #4CAF50; /* Green color for description text */
             margin-top: 10px; /* Moved down to avoid overlap */
         }
         input[type="number"] {
@@ -43,8 +46,8 @@
             box-sizing: border-box;
             border: 1px solid #ccc;
             border-radius: 4px;
-            background-color: #333; /* Dark background for input fields */
-            color: #fff; /* Light text color for input fields */
+            background-color: #f9f9f9; /* Light background for input fields */
+            color: #333; /* Dark text color for readability */
         }
         .football-btn {
             background: url('https://image.shutterstock.com/image-vector/vector-illustration-soccer-ball-isolated-260nw-1067199104.jpg') no-repeat center center;
@@ -58,6 +61,15 @@
             display: block;
             margin-top: 20px;
             background-color: #333; /* Fallback background color */
+            color: #FFC107; /* Text color for better visibility */
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 60px; /* Center text vertically */
+            text-align: center; /* Center text horizontally */
+            padding: 0; /* Remove default padding */
+        }
+        .football-btn::before {
+            content: "Predict"; /* Text on the football button */
         }
         button {
             background-color: #FFC107; /* Updated color for better visibility */
@@ -77,6 +89,7 @@
             background-color: #1B5E20;
             padding: 10px;
             border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added shadow for depth */
         }
         .spinner {
             display: none;
