@@ -25,11 +25,20 @@ def predict():
 
         # Define the top 13 features
         top_13_features = [
-            'TouDef3rd', 'TI', 'Clr', 'PasTotPrgDist', 'PasDead',
-            'TouDefPen', 'PasMedCmp', 'TouAtt3rd', 'RecProg',
-            'TouAttPen', 'PasTotCmp', 'TouMid3rd', 'Shots'
-        ]
-
+    'TouDef3rd',
+    'TI',
+    'TouDefPen',
+    'Clr',
+    'PasTotPrgDist',
+    'PasMedCmp',
+    'PasDead',
+    'RecProg',
+    'TouAtt3rd',
+    'TouAttPen',
+    'TouMid3rd',
+    'Touches',
+    'PasTotCmp'
+]
         # Ensure only the top 13 features are used
         X = df[top_13_features]
 

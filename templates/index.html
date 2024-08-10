@@ -6,8 +6,8 @@
     <title>Pitch Perfect Prediction</title>
     <style>
         body {
-            background: url('https://i.imgur.com/R6cpurn.jpg') no-repeat center center fixed; /* Background image */
-            background-size: cover; /* Ensure the image covers the entire background */
+            background: url('https://i.imgur.com/R6cpurn.jpg') no-repeat center center fixed;
+            background-size: cover;
             font-family: Arial, sans-serif;
             color: #fff;
             padding: 20px;
@@ -18,24 +18,26 @@
         form {
             max-width: 600px;
             margin: auto;
-            background-color: #2E7D32; /* Darker green for contrast */
+            background-color: #2E7D32;
             padding: 20px;
             border-radius: 10px;
         }
         .form-group {
-            margin-bottom: 20px; /* Increased margin to move description down */
+            margin-bottom: 20px;
             position: relative;
         }
         label {
             font-weight: bold;
             display: block;
             margin-bottom: 5px;
-            color: #fff; /* White color for labels */
+            color: #fff;
         }
         .description {
             font-size: 12px;
             color: #ccc;
-            margin-top: 5px; /* Adjusted margin to move description lower */
+            margin
+
+            margin-top: 5px;
         }
         input[type="number"] {
             width: 100%;
@@ -45,28 +47,28 @@
             border-radius: 4px;
         }
         .football-btn {
-            background: url('https://i.imgur.com/rGSEBFp.png') no-repeat center center; /* Updated image */
+            background: url('https://i.imgur.com/rGSEBFp.png') no-repeat center center;
             background-size: contain;
-            background-color: #fff; /* White background to ensure image visibility */
-            width: 80px; /* Adjust size for visibility */
-            height: 80px; /* Adjust size for visibility */
-            border: 2px solid #FFC107; /* Added border to make it stand out */
+            background-color: #fff;
+            width: 80px;
+            height: 80px;
+            border: 2px solid #FFC107;
             border-radius: 50%;
             cursor: pointer;
             margin: auto;
             display: block;
             margin-top: 20px;
-            border: none; /* Remove default border */
-            outline: none; /* Remove default focus outline */
-            transition: transform 0.2s; /* Smooth transition for hover effect */
+            border: none;
+            outline: none;
+            transition: transform 0.2s;
         }
         .football-btn:hover {
-            transform: scale(1.1); /* Slightly increase size on hover */
+            transform: scale(1.1);
         }
         button {
-            background-color: #FFC107; /* Updated color for better visibility */
-            color: #000; /* Dark text color for contrast */
-            padding: 15px 20px; /* Increased padding for larger button */
+            background-color: #FFC107;
+            color: #000;
+            padding: 15px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -74,39 +76,39 @@
             margin-top: 10px;
         }
         button:hover {
-            background-color: #FFEB3B; /* Hover effect */
+            background-color: #FFEB3B;
         }
         #reset-btn {
-            background-color: #4CAF50; /* Green color */
-            color: #fff; /* White font color */
-            font-size: 14px; /* Font size */
-            padding: 10px 15px; /* Padding */
-            width: auto; /* Adjust width to fit text */
+            background-color: #4CAF50;
+            color: #fff;
+            font-size: 14px;
+            padding: 10px 15px;
+            width: auto;
             display: block;
-            margin: 20px auto; /* Center the reset button */
-            border: none; /* Remove border */
-            border-radius: 5px; /* Rounded corners */
+            margin: 20px auto;
+            border: none;
+            border-radius: 5px;
         }
         #reset-btn:hover {
-            background-color: #66BB6A; /* Hover effect */
+            background-color: #66BB6A;
         }
         .result {
             margin-top: 20px;
             background-color: #1B5E20;
-            padding: 20px; /* Increased padding for better spacing */
+            padding: 20px;
             border-radius: 5px;
-            text-align: center; /* Center text inside result */
-            max-width: 600px; /* Optional: limit max width for better readability */
-            margin-left: auto; /* Center horizontally */
-            margin-right: auto; /* Center horizontally */
+            text-align: center;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .result ul {
-            list-style-type: none; /* Remove bullet points */
-            padding: 0; /* Remove default padding */
-            margin: 0; /* Remove default margin */
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
         }
         .result li {
-            margin: 10px 0; /* Add spacing between list items */
+            margin: 10px 0;
         }
         .spinner {
             display: none;
@@ -135,7 +137,12 @@
         <div class="form-group">
             <label for="TI">TI:</label>
             <input type="number" id="TI" name="TI" min="0.01" step="any" required>
-            <div class="description">Throw Ins Taken (must be greater than 0)</div>
+            <div class="description">Throw-Ins taken (must be greater than 0)</div>
+        </div>
+        <div class="form-group">
+            <label for="TouDefPen">TouDefPen:</label>
+            <input type="number" id="TouDefPen" name="TouDefPen" min="0.01" step="any" required>
+            <div class="description">Touches in defensive penalty area (must be greater than 0)</div>
         </div>
         <div class="form-group">
             <label for="Clr">Clr:</label>
@@ -148,19 +155,19 @@
             <div class="description">Total distance, in yards, that completed passes have traveled towards the opponent's goal (must be greater than 0)</div>
         </div>
         <div class="form-group">
+            <label for="PasMedCmp">PasMedCmp:</label>
+            <input type="number" id="PasMedCmp" name="PasMedCmp" min="0.01" step="any" required>
+            <div class="description">Passes completed between 15 and 30 yards (must be greater than 0)</div>
+        </div>
+        <div class="form-group">
             <label for="PasDead">PasDead:</label>
             <input type="number" id="PasDead" name="PasDead" min="0.01" step="any" required>
             <div class="description">Dead-Ball passes made (must be greater than 0)</div>
         </div>
         <div class="form-group">
-            <label for="TouDefPen">TouDefPen:</label>
-            <input type="number" id="TouDefPen" name="TouDefPen" min="0.01" step="any" required>
-            <div class="description">Touches in defensive penalty Area (must be greater than 0)</div>
-        </div>
-        <div class="form-group">
-            <label for="PasMedCmp">PasMedCmp:</label>
-            <input type="number" id="PasMedCmp" name="PasMedCmp" min="0.01" step="any" required>
-            <div class="description">Passes completed between 15 and 30 yards (must be greater than 0)</div>
+            <label for="RecProg">RecProg:</label>
+            <input type="number" id="RecProg" name="RecProg" min="0.01" step="any" required>
+            <div class="description">Completed passes that move the ball towards the opponent's goal at least 10 yards, or any completed pass into the penalty area (must be greater than 0)</div>
         </div>
         <div class="form-group">
             <label for="TouAtt3rd">TouAtt3rd:</label>
@@ -168,19 +175,9 @@
             <div class="description">Touches in attacking third (must be greater than 0)</div>
         </div>
         <div class="form-group">
-            <label for="RecProg">RecProg:</label>
-            <input type="number" id="RecProg" name="RecProg" min="0.01" step="any" required>
-            <div class="description">Completed passes into the penalty area (must be greater than 0)</div>
-        </div>
-        <div class="form-group">
             <label for="TouAttPen">TouAttPen:</label>
             <input type="number" id="TouAttPen" name="TouAttPen" min="0.01" step="any" required>
             <div class="description">Touches in attacking penalty area (must be greater than 0)</div>
-        </div>
-        <div class="form-group">
-            <label for="PasTotCmp">PasTotCmp:</label>
-            <input type="number" id="PasTotCmp" name="PasTotCmp" min="0.01" step="any" required>
-            <div class="description">Total passes completed (must be greater than 0)</div>
         </div>
         <div class="form-group">
             <label for="TouMid3rd">TouMid3rd:</label>
@@ -188,9 +185,14 @@
             <div class="description">Touches in middle third (must be greater than 0)</div>
         </div>
         <div class="form-group">
-            <label for="Shots">Shots:</label>
-            <input type="number" id="Shots" name="Shots" min="0.01" step="any" required>
-            <div class="description">Total shots taken (does not include penalty kicks) (must be greater than 0)</div>
+            <label for="Touches">Touches:</label>
+            <input type="number" id="Touches" name="Touches" min="0.01" step="any" required>
+            <div class="description">Total number of times a player touched the ball (must be greater than 0)</div>
+        </div>
+        <div class="form-group">
+            <label for="PasTotCmp">PasTotCmp:</label>
+            <input type="number" id="PasTotCmp" name="PasTotCmp" min="0.01" step="any" required>
+            <div class="description">Total passes completed (must be greater than 0)</div>
         </div>
         <button type="submit" class="football-btn"></button>
         <button type="button" id="reset-btn">Reset</button>
@@ -232,8 +234,8 @@
 
                 let predictionHTML = "<h3>Prediction</h3><p>" + classLabels[predictions[0]] + "</p>";
                 let probabilitiesHTML = "<h3>Probabilities</h3><ul>";
-                probabilities[0].forEach((prob, index) => {
-                    probabilitiesHTML += `<li>${classLabels[index]}: ${(prob * 100).toFixed(2)}%</li>`;
+                probabilities[0].forEach((probability, index) => {
+                    probabilitiesHTML += "<li>" + classLabels[index] + ": " + (probability * 100).toFixed(2) + "%</li>";
                 });
                 probabilitiesHTML += "</ul>";
 
@@ -241,14 +243,14 @@
             })
             .catch(error => {
                 document.getElementById("spinner").style.display = "none"; // Hide spinner
-                console.error("Error:", error);
+                document.getElementById("result").innerHTML = "<p style='color: red;'>An error occurred. Please try again.</p>";
+                console.error('Error:', error);
             });
         });
 
         document.getElementById("reset-btn").addEventListener("click", function() {
-            document.getElementById("prediction-form").reset(); // Reset form fields
-            document.getElementById("result").innerHTML = ""; // Clear previous results
-            document.getElementById("spinner").style.display = "none"; // Hide spinner
+            document.getElementById("prediction-form").reset();
+            document.getElementById("result").innerHTML = "";
         });
     </script>
 </body>
