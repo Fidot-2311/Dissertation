@@ -23,24 +23,31 @@ def predict():
         # Convert data to DataFrame
         df = pd.DataFrame(data)
 
-        # Define the top 13 features
-        top_13_features = [
+        # Define the top n features
+        top_n_features = [
     'TouDef3rd',
     'TI',
-    'TouDefPen',
-    'Clr',
     'PasTotPrgDist',
-    'PasMedCmp',
+    'Clr',
     'PasDead',
+    'TouDefPen',
     'RecProg',
-    'TouAtt3rd',
+    'PasMedCmp',
     'TouAttPen',
+    'TouAtt3rd',
+    'PasFK',
+    'PasTotCmp',
     'TouMid3rd',
-    'Touches',
-    'PasTotCmp'
+    'Shots',
+    'Pas3rd',
+    'Recov',
+    'SCA',
+    'TklMid3rd',
+    'ToAtt'
+
 ]
-        # Ensure only the top 13 features are used
-        X = df[top_13_features]
+        # Ensure only the top n features are used
+        X = df[top_n_features]
 
         # Make predictions
         predictions = model.predict(X)
