@@ -200,12 +200,27 @@
         <div class="form-group">
             <label for="Pas3rd">Pas3rd:</label>
             <input type="number" id="Pas3rd" name="Pas3rd" min="0.01" step="any" required>
-            <div class="description">Passes completed in the final third (must be greater than 0)</div>
+            <div class="description">Completed passes into the final third (must be greater than 0)</div>
         </div>
         <div class="form-group">
             <label for="PasPrgDist">PasPrgDist:</label>
             <input type="number" id="PasPrgDist" name="PasPrgDist" min="0.01" step="any" required>
             <div class="description">Progressive distance, the total distance of passes that move the ball towards the opponent's goal (must be greater than 0)</div>
+        </div>
+        <div class="form-group">
+            <label for="PasCK">PasCK:</label>
+            <input type="number" id="PasCK" name="PasCK" min="0.01" step="any" required>
+            <div class="description">Passes attempted from corner kicks (must be greater than 0)</div>
+        </div>
+        <div class="form-group">
+            <label for="Int">Int:</label>
+            <input type="number" id="Int" name="Int" min="0.01" step="any" required>
+            <div class="description">Interceptions made (must be greater than 0)</div>
+        </div>
+        <div class="form-group">
+            <label for="Rec">Rec:</label>
+            <input type="number" id="Rec" name="Rec" min="0.01" step="any" required>
+            <div class="description">Passes received successfully (must be greater than 0)</div>
         </div>
         <button type="submit">Predict</button>
         <div id="spinner" class="spinner"></div>
