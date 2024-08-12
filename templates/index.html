@@ -235,12 +235,24 @@
         document.getElementById("prediction-form").addEventListener("submit", function(event){
             event.preventDefault();
             document.getElementById("spinner").style.display = "block";
-            // Simulate a delay
+            
+            // Simulate a delay to mimic prediction processing
             setTimeout(function() {
                 document.getElementById("spinner").style.display = "none";
                 document.getElementById("result").style.display = "block";
-                document.getElementById("result-list").innerHTML = "<li>Prediction: Successful</li>";
-            }, 2000);
+
+                // Replace this array with the actual prediction results
+                var predictions = ["Position 1: Forward", "Position 2: Midfielder", "Position 3: Defender"];
+                
+                // Populate the result list with predictions
+                var resultList = document.getElementById("result-list");
+                resultList.innerHTML = "";  // Clear previous results
+                predictions.forEach(function(prediction) {
+                    var listItem = document.createElement("li");
+                    listItem.textContent = prediction;
+                    resultList.appendChild(listItem);
+                });
+            }, 2000);  // Simulated delay of 2 seconds
         });
 
         function resetForm() {
