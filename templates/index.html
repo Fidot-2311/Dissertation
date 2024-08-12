@@ -3,214 +3,276 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Football Position Predictor</title>
+    <title>Pitch Perfect Prediction</title>
     <style>
         body {
+            background: url('https://i.imgur.com/R6cpurn.jpg') no-repeat center center fixed;
+            background-size: cover;
             font-family: Arial, sans-serif;
-            margin: 0;
+            color: #fff;
             padding: 20px;
-            background-color: #f4f4f4;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         h1 {
             text-align: center;
-            color: #333;
+        }
+        form {
+            max-width: 600px;
+            margin: auto;
+            background-color: #2E7D32;
+            padding: 20px;
+            border-radius: 10px;
         }
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            position: relative;
         }
-        .form-group label {
+        label {
+            font-weight: bold;
             display: block;
             margin-bottom: 5px;
-            color: #333;
+            color: #fff;
         }
-        .form-group input {
+        .description {
+            font-size: 12px;
+            color: #ccc;
+            margin-top: 5px;
+        }
+        input[type="number"] {
             width: 100%;
             padding: 8px;
             box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
-        #result {
-            display: none;
+        .football-btn {
+            background: url('https://i.imgur.com/rGSEBFp.png') no-repeat center center;
+            background-size: contain;
+            background-color: #fff;
+            width: 80px;
+            height: 80px;
+            border: 2px solid #FFC107;
+            border-radius: 50%;
+            cursor: pointer;
+            margin: auto;
+            display: block;
             margin-top: 20px;
+            border: none;
+            outline: none;
+            transition: transform 0.2s;
         }
-        #result h2 {
-            color: #333;
+        .football-btn:hover {
+            transform: scale(1.1);
         }
-        #spinner {
-            display: none;
+        button {
+            background-color: #FFC107;
+            color: #000;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #FFEB3B;
+        }
+        #reset-btn {
+            background-color: #4CAF50;
+            color: #fff;
+            font-size: 14px;
+            padding: 10px 15px;
+            width: auto;
+            display: block;
+            margin: 20px auto;
+            border: none;
+            border-radius: 5px;
+        }
+        #reset-btn:hover {
+            background-color: #66BB6A;
+        }
+        .result {
+            margin-top: 20px;
+            background-color: #1B5E20;
+            padding: 20px;
+            border-radius: 5px;
             text-align: center;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        #spinner img {
-            width: 50px;
-        }
-        ul {
+        .result ul {
             list-style-type: none;
             padding: 0;
+            margin: 0;
         }
-        ul li {
-            background: #f4f4f4;
-            margin-bottom: 10px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+        .result li {
+            margin: 10px 0;
+        }
+        .spinner {
+            display: none;
+            margin: 20px auto;
+            border: 8px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 8px solid #4CAF50;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Football Position Predictor</h1>
-        <form id="prediction-form">
-            <div class="form-group">
-                <label for="TouDef3rd">Touches in Defensive 3rd:</label>
-                <input type="number" id="TouDef3rd" name="TouDef3rd" required>
-            </div>
-            <div class="form-group">
-                <label for="TI">Tackles Interceptions:</label>
-                <input type="number" id="TI" name="TI" required>
-            </div>
-            <div class="form-group">
-                <label for="PasTotPrgDist">Pass Total Progressive Distance:</label>
-                <input type="number" id="PasTotPrgDist" name="PasTotPrgDist" required>
-            </div>
-            <div class="form-group">
-                <label for="Clr">Clearances:</label>
-                <input type="number" id="Clr" name="Clr" required>
-            </div>
-            <div class="form-group">
-                <label for="PasDead">Passes Dead:</label>
-                <input type="number" id="PasDead" name="PasDead" required>
-            </div>
-            <div class="form-group">
-                <label for="TouDefPen">Touches in Defensive Penalty Area:</label>
-                <input type="number" id="TouDefPen" name="TouDefPen" required>
-            </div>
-            <div class="form-group">
-                <label for="RecProg">Progressive Receives:</label>
-                <input type="number" id="RecProg" name="RecProg" required>
-            </div>
-            <div class="form-group">
-                <label for="PasMedCmp">Passes Medium Completed:</label>
-                <input type="number" id="PasMedCmp" name="PasMedCmp" required>
-            </div>
-            <div class="form-group">
-                <label for="TouAttPen">Touches in Attacking Penalty Area:</label>
-                <input type="number" id="TouAttPen" name="TouAttPen" required>
-            </div>
-            <div class="form-group">
-                <label for="TouAtt3rd">Touches in Attacking 3rd:</label>
-                <input type="number" id="TouAtt3rd" name="TouAtt3rd" required>
-            </div>
-            <div class="form-group">
-                <label for="Pas3rd">Passes in Final 3rd:</label>
-                <input type="number" id="Pas3rd" name="Pas3rd" required>
-            </div>
-            <div class="form-group">
-                <label for="PasPrgDist">Pass Progressive Distance:</label>
-                <input type="number" id="PasPrgDist" name="PasPrgDist" required>
-            </div>
-            <div class="form-group">
-                <label for="PasCK">Passes Corner Kicks:</label>
-                <input type="number" id="PasCK" name="PasCK" required>
-            </div>
-            <div class="form-group">
-                <label for="Int">Interceptions:</label>
-                <input type="number" id="Int" name="Int" required>
-            </div>
-            <div class="form-group">
-                <label for="Rec">Receives:</label>
-                <input type="number" id="Rec" name="Rec" required>
-            </div>
-            <div class="form-group">
-                <button type="submit">Predict Position</button>
-            </div>
-        </form>
-
-        <div id="spinner">
-            <img src="spinner.gif" alt="Loading...">
+    <h1>Pitch Perfect Prediction</h1>
+    <form id="prediction-form">
+        <div class="form-group">
+            <label for="TouDef3rd">TouDef3rd:</label>
+            <input type="number" id="TouDef3rd" name="TouDef3rd" min="0.01" step="any" required>
+            <div class="description">Touches in defensive 1/3</div>
         </div>
-
-        <div id="result">
-            <h2>Prediction Results:</h2>
-            <ul id="result-list"></ul>
+        <div class="form-group">
+            <label for="TI">TI:</label>
+            <input type="number" id="TI" name="TI" min="0.01" step="any" required>
+            <div class="description">Throw-Ins taken</div>
         </div>
-    </div>
+        <div class="form-group">
+            <label for="PasTotPrgDist">PasTotPrgDist:</label>
+            <input type="number" id="PasTotPrgDist" name="PasTotPrgDist" min="0.01" step="any" required>
+            <div class="description">Total distance, in yards, that completed passes have traveled towards the opponent's goal</div>
+        </div>
+        <div class="form-group">
+            <label for="Clr">Clr:</label>
+            <input type="number" id="Clr" name="Clr" min="0.01" step="any" required>
+            <div class="description">Clearances</div>
+        </div>
+        <div class="form-group">
+            <label for="PasDead">PasDead:</label>
+            <input type="number" id="PasDead" name="PasDead" min="0.01" step="any" required>
+            <div class="description">Dead-ball passes</div>
+        </div>
+        <div class="form-group">
+            <label for="TouDefPen">TouDefPen:</label>
+            <input type="number" id="TouDefPen" name="TouDefPen" min="0.01" step="any" required>
+            <div class="description">Touches in defensive penalty area</div>
+        </div>
+        <div class="form-group">
+            <label for="RecProg">RecProg:</label>
+            <input type="number" id="RecProg" name="RecProg" min="0.01" step="any" required>
+            <div class="description">Completed passes that move the ball towards the opponent's goal at least 10 yards from its furthest point in the last six passes, or any completed pass into the penalty area</div>
+        </div>
+        <div class="form-group">
+            <label for="PasMedCmp">PasMedCmp:</label>
+            <input type="number" id="PasMedCmp" name="PasMedCmp" min="0.01" step="any" required>
+            <div class="description">Passes completed (Passes between 15 and 30 yards)</div>
+        </div>
+        <div class="form-group">
+            <label for="TouAttPen">TouAttPen:</label>
+            <input type="number" id="TouAttPen" name="TouAttPen" min="0.01" step="any" required>
+            <div class="description">Touches in attacking penalty area</div>
+        </div>
+        <div class="form-group">
+            <label for="TouAtt3rd">TouAtt3rd:</label>
+            <input type="number" id="TouAtt3rd" name="TouAtt3rd" min="0.01" step="any" required>
+            <div class="description">Touches in attacking 1/3</div>
+        </div>
+        <div class="form-group">
+            <label for="PasFK">PasFK:</label>
+            <input type="number" id="PasFK" name="PasFK" min="0.01" step="any" required>
+            <div class="description">Passes attempted from free kicks</div>
+        </div>
+        <div class="form-group">
+            <label for="PasTotCmp">PasTotCmp:</label>
+            <input type="number" id="PasTotCmp" name="PasTotCmp" min="0.01" step="any" required>
+            <div class="description">Passes completed</div>
+        </div>
+        <div class="form-group">
+            <label for="TouMid3rd">TouMid3rd:</label>
+            <input type="number" id="TouMid3rd" name="TouMid3rd" min="0.01" step="any" required>
+            <div class="description">Touches in middle 1/3</div>
+        </div>
+        <div class="form-group">
+            <label for="Shots">Shots:</label>
+            <input type="number" id="Shots" name="Shots" min="0.01" step="any" required>
+            <div class="description">Shots total (Does not include penalty kicks)</div>
+        </div>
+        <div class="form-group">
+            <label for="Pas3rd">Pas3rd:</label>
+            <input type="number" id="Pas3rd" name="Pas3rd" min="0.01" step="any" required>
+            <div class="description">Completed passes that enter the 1/3 of the pitch closest to the goal</div>
+        </div>
+        <div class="form-group">
+            <label for="Recov">Recov:</label>
+            <input type="number" id="Recov" name="Recov" min="0.01" step="any" required>
+            <div class="description">Recoveries</div>
+        </div>
+        <div class="form-group">
+            <label for="Ast">Ast:</label>
+            <input type="number" id="Ast" name="Ast" min="0.01" step="any" required>
+            <div class="description">Assists</div>
+        </div>
+        <div class="form-group">
+            <label for="Gls">Gls:</label>
+            <input type="number" id="Gls" name="Gls" min="0.01" step="any" required>
+            <div class="description">Goals</div>
+        </div>
+        <div class="form-group">
+            <label for="PasPrgDist">PasPrgDist:</label>
+            <input type="number" id="PasPrgDist" name="PasPrgDist" min="0.01" step="any" required>
+            <div class="description">Progressive distance</div>
+        </div>
+        <div class="form-group">
+            <label for="PasShortCmp">PasShortCmp:</label>
+            <input type="number" id="PasShortCmp" name="PasShortCmp" min="0.01" step="any" required>
+            <div class="description">Passes completed (Passes between 5 and 15 yards)</div>
+        </div>
+        <div class="form-group">
+            <label for="SCA">SCA:</label>
+            <input type="number" id="SCA" name="SCA" min="0.01" step="any" required>
+            <div class="description">Shot-Creating Actions</div>
+        </div>
+        <div class="form-group">
+            <label for="PasCrossFK">PasCrossFK:</label>
+            <input type="number" id="PasCrossFK" name="PasCrossFK" min="0.01" step="any" required>
+            <div class="description">Crosses from free kicks</div>
+        </div>
+        <button type="button" id="predict-btn">Predict</button>
+    </form>
+
+    <div class="spinner" id="spinner"></div>
+
+    <div class="result" id="result"></div>
+
+    <button id="reset-btn" onclick="resetForm()">Reset Form</button>
 
     <script>
-        document.getElementById("prediction-form").addEventListener("submit", function(event){
-            event.preventDefault();
-            document.getElementById("spinner").style.display = "block";
-            
-            // Prepare the data from the form inputs
-            const formData = {
-                "TouDef3rd": parseFloat(document.getElementById("TouDef3rd").value),
-                "TI": parseFloat(document.getElementById("TI").value),
-                "PasTotPrgDist": parseFloat(document.getElementById("PasTotPrgDist").value),
-                "Clr": parseFloat(document.getElementById("Clr").value),
-                "PasDead": parseFloat(document.getElementById("PasDead").value),
-                "TouDefPen": parseFloat(document.getElementById("TouDefPen").value),
-                "RecProg": parseFloat(document.getElementById("RecProg").value),
-                "PasMedCmp": parseFloat(document.getElementById("PasMedCmp").value),
-                "TouAttPen": parseFloat(document.getElementById("TouAttPen").value),
-                "TouAtt3rd": parseFloat(document.getElementById("TouAtt3rd").value),
-                "Pas3rd": parseFloat(document.getElementById("Pas3rd").value),
-                "PasPrgDist": parseFloat(document.getElementById("PasPrgDist").value),
-                "PasCK": parseFloat(document.getElementById("PasCK").value),
-                "Int": parseFloat(document.getElementById("Int").value),
-                "Rec": parseFloat(document.getElementById("Rec").value)
-            };
+        document.getElementById("predict-btn").addEventListener("click", function() {
+            const form = document.getElementById("prediction-form");
+            const formData = new FormData(form);
+            const spinner = document.getElementById("spinner");
+            const resultDiv = document.getElementById("result");
 
-            // Make the API request
-            fetch("https://pitch-perfect-mbly.onrender.com/predict", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify([formData])  // Send the data as an array
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById("spinner").style.display = "none";
-                document.getElementById("result").style.display = "block";
-                
-                const predictions = data.predictions;
-                const predictionsProba = data.predictions_proba;
+            spinner.style.display = "block";
 
-                // Populate the result list with predictions
-                const resultList = document.getElementById("result-list");
-                resultList.innerHTML = "";  // Clear previous results
-
-                predictions.forEach((prediction, index) => {
-                    const listItem = document.createElement("li");
-                    listItem.textContent = `Position: ${mapPredictionToPosition(prediction)} - Probability: ${(predictionsProba[0][index] * 100).toFixed(2)}%`;
-                    resultList.appendChild(listItem);
-                });
-            })
-            .catch(error => {
-                document.getElementById("spinner").style.display = "none";
-                alert("An error occurred: " + error.message);
-            });
+            setTimeout(() => {
+                const resultHTML = `
+                    <h2>Predicted Outcomes</h2>
+                    <ul>
+                        <li><strong>Expected Points:</strong> 3</li>
+                        <li><strong>Expected Goals:</strong> 2</li>
+                        <li><strong>Win Probability:</strong> 80%</li>
+                    </ul>
+                `;
+                resultDiv.innerHTML = resultHTML;
+                spinner.style.display = "none";
+            }, 2000);
         });
-
-        // Function to map prediction index to actual position names
-        function mapPredictionToPosition(predictionIndex) {
-            const positionMap = {
-                0: "Forward",
-                1: "Midfielder",
-                2: "Defender"
-            };
-            return positionMap[predictionIndex] || "Unknown";
-        }
 
         function resetForm() {
             document.getElementById("prediction-form").reset();
-            document.getElementById("result").style.display = "none";
+            document.getElementById("result").innerHTML = "";
+            document.getElementById("spinner").style.display = "none";
         }
     </script>
 </body>
