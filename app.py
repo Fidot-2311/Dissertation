@@ -3,7 +3,7 @@ import joblib
 import pandas as pd
 
 # Load the trained XGBoost model
-model = joblib.load('best_xgboost_model.pkl')
+model = joblib.load('best_randomforest_model.pkl')
 
 # Create a Flask app
 app = Flask(__name__)
@@ -25,27 +25,23 @@ def predict():
 
         # Define the top n features
         top_n_features = [
-    'TouDef3rd',
     'TI',
-    'PasTotPrgDist',
+    'TouDef3rd',
     'Clr',
-    'PasDead',
+    'PasTotPrgDist',
     'TouDefPen',
+    'PasDead',
     'RecProg',
-    'PasMedCmp',
     'TouAttPen',
-    'TouAtt3rd',
-    'PasFK',
-    'PasTotCmp',
-    'TouMid3rd',
     'Shots',
-    'Pas3rd',
-    'Recov',
-    'SCA',
-    'TklMid3rd',
-    'ToAtt'
-
+    'PasMedCmp',
+    'TouMid3rd',
+    'TouAtt3rd',
+    'Touches',
+    'Off',
+    'CarDis',
 ]
+
         # Ensure only the top n features are used
         X = df[top_n_features]
 
