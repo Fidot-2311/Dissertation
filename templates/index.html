@@ -19,16 +19,26 @@
         }
 
         form {
-            max-width: 600px;
+            max-width: 800px;
             margin: auto;
             background-color: #2E7D32;
             padding: 20px;
             border-radius: 10px;
         }
 
-        .form-group {
+        .form-row {
+            display: flex;
+            justify-content: space-between;
             margin-bottom: 20px;
-            position: relative;
+        }
+
+        .form-group {
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .form-group:last-child {
+            margin-right: 0;
         }
 
         label {
@@ -151,17 +161,111 @@
 <body>
     <h1>Pitch Perfect Prediction</h1>
     <form id="prediction-form">
-        <!-- Your form fields go here, similar to the existing code you provided -->
-        <!-- Example form field -->
-        <div class="form-group">
-            <label for="TouDef3rd">TouDef3rd:</label>
-            <input type="number" id="TouDef3rd" name="TouDef3rd" min="0.01" step="any" required>
-            <div class="description">Touches in defensive 1/3</div>
+        <!-- First Row -->
+        <div class="form-row">
+            <div class="form-group">
+                <label for="TI">TI:</label>
+                <input type="number" id="TI" name="TI" min="0.01" step="any" required>
+                <div class="description">Turnovers</div>
+            </div>
+            <div class="form-group">
+                <label for="TouDef3rd">TouDef3rd:</label>
+                <input type="number" id="TouDef3rd" name="TouDef3rd" min="0.01" step="any" required>
+                <div class="description">Touches in defensive 1/3</div>
+            </div>
         </div>
-        <!-- Add all other form fields here -->
+        <!-- Second Row -->
+        <div class="form-row">
+            <div class="form-group">
+                <label for="Clr">Clr:</label>
+                <input type="number" id="Clr" name="Clr" min="0.01" step="any" required>
+                <div class="description">Clearances</div>
+            </div>
+            <div class="form-group">
+                <label for="PasTotPrgDist">PasTotPrgDist:</label>
+                <input type="number" id="PasTotPrgDist" name="PasTotPrgDist" min="0.01" step="any" required>
+                <div class="description">Total progressive passing distance</div>
+            </div>
+        </div>
+        <!-- Third Row -->
+        <div class="form-row">
+            <div class="form-group">
+                <label for="TouDefPen">TouDefPen:</label>
+                <input type="number" id="TouDefPen" name="TouDefPen" min="0.01" step="any" required>
+                <div class="description">Touches in defensive penalty area</div>
+            </div>
+            <div class="form-group">
+                <label for="PasDead">PasDead:</label>
+                <input type="number" id="PasDead" name="PasDead" min="0.01" step="any" required>
+                <div class="description">Dead ball passes</div>
+            </div>
+        </div>
+        <!-- Fourth Row -->
+        <div class="form-row">
+            <div class="form-group">
+                <label for="RecProg">RecProg:</label>
+                <input type="number" id="RecProg" name="RecProg" min="0.01" step="any" required>
+                <div class="description">Progressive passes received</div>
+            </div>
+            <div class="form-group">
+                <label for="TouAttPen">TouAttPen:</label>
+                <input type="number" id="TouAttPen" name="TouAttPen" min="0.01" step="any" required>
+                <div class="description">Touches in attacking penalty area</div>
+            </div>
+        </div>
+        <!-- Fifth Row -->
+        <div class="form-row">
+            <div class="form-group">
+                <label for="Shots">Shots:</label>
+                <input type="number" id="Shots" name="Shots" min="0.01" step="any" required>
+                <div class="description">Total shots</div>
+            </div>
+            <div class="form-group">
+                <label for="PasMedCmp">PasMedCmp:</label>
+                <input type="number" id="PasMedCmp" name="PasMedCmp" min="0.01" step="any" required>
+                <div class="description">Medium passes completed</div>
+            </div>
+        </div>
+        <!-- Sixth Row -->
+        <div class="form-row">
+            <div class="form-group">
+                <label for="TouMid3rd">TouMid3rd:</label>
+                <input type="number" id="TouMid3rd" name="TouMid3rd" min="0.01" step="any" required>
+                <div class="description">Touches in middle 1/3</div>
+            </div>
+            <div class="form-group">
+                <label for="TouAtt3rd">TouAtt3rd:</label>
+                <input type="number" id="TouAtt3rd" name="TouAtt3rd" min="0.01" step="any" required>
+                <div class="description">Touches in attacking 1/3</div>
+            </div>
+        </div>
+        <!-- Seventh Row -->
+        <div class="form-row">
+            <div class="form-group">
+                <label for="Touches">Touches:</label>
+                <input type="number" id="Touches" name="Touches" min="0.01" step="any" required>
+                <div class="description">Total touches</div>
+            </div>
+            <div class="form-group">
+                <label for="Off">Off:</label>
+                <input type="number" id="Off" name="Off" min="0.01" step="any" required>
+                <div class="description">Offsides</div>
+            </div>
+        </div>
+        <!-- Eighth Row -->
+        <div class="form-row">
+            <div class="form-group">
+                <label for="CarDis">CarDis:</label>
+                <input type="number" id="CarDis" name="CarDis" min="0.01" step="any" required>
+                <div class="description">Times dispossessed</div>
+            </div>
+        </div>
+
         <button type="submit" class="football-btn"></button>
-        <button type="button" id="reset-btn">Reset</button>
+        <button id="reset-btn" type="reset">Reset</button>
+
     </form>
+
     <div class="spinner" id="spinner"></div>
     <div class="result" id="result"></div>
 
