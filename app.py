@@ -3,7 +3,7 @@ import joblib
 import pandas as pd
 
 # Load the trained XGBoost model
-model = joblib.load('XGBoost_best_model.pkl')
+model = joblib.load('RandomForest_best_model.pkl')
 
 # Create a Flask app
 app = Flask(__name__)
