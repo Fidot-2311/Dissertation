@@ -3,7 +3,7 @@ import joblib
 import pandas as pd
 
 # Load the trained XGBoost model
-model = joblib.load('XGBoost_best_mod.pkl')
+model = joblib.load('XGBoost_best_model.pkl')
 
 # Create a Flask app
 app = Flask(__name__)
@@ -25,8 +25,8 @@ def predict():
 
         # Define the top n features
         top_n_features = [
-    'PasTotPrgDist', 'PasDead', 'TouDefPen', 'RecProg', 
-    'PasMedCmp']
+    'TouDef3rd', 'TI', 'TouDefPen', 'PasTotPrgDist', 
+    'Clr','PasDead','PasMedCmp','TouAtt3rd','TouMid3rd','Shots','TouAttPen','RecProg','PasTotCmp','Pas3rd','CarMis','Touches','SCA','PasFK','PasLonAtt']
 
 
         # Ensure only the top n features are used
