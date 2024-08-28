@@ -25,11 +25,8 @@ def predict():
 
         # Define the top n features
         top_n_features = [
-    'PasTotPrgDist', 'PasDead', 'PasMedCmp', 'TouDefPen', 'TouAttPen', 
-    'Shots', 'RecProg', 'PasLonAtt', 'Touches', 'TouMid3rd', 
-    'CarDis', 'TouAtt3rd', 'CarMis', 'Pas3rd', 'PasFK',
-    'Off'
-]
+    'PasTotPrgDist', 'PasDead', 'TouDefPen', 'RecProg', 
+    'PasMedCmp']
 
 
         # Ensure only the top n features are used
