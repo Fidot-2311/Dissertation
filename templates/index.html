@@ -156,33 +156,9 @@
     <form id="prediction-form">
         <!-- Input Fields -->
         <div class="form-group">
-            <label for="TouDef3rd">TouDef3rd:</label>
-            <input type="number" id="TouDef3rd" name="TouDef3rd" min="0" step="any" required>
-            <div class="description">Touches in defensive 1/3</div>
-        </div>
-
-        <div class="form-group">
-            <label for="TI">TI:</label>
-            <input type="number" id="TI" name="TI" min="0" step="any" required>
-            <div class="description">Turnovers</div>
-        </div>
-
-        <div class="form-group">
-            <label for="TouDefPen">TouDefPen:</label>
-            <input type="number" id="TouDefPen" name="TouDefPen" min="0" step="any" required>
-            <div class="description">Touches in defensive penalty area</div>
-        </div>
-
-        <div class="form-group">
             <label for="PasTotPrgDist">PasTotPrgDist:</label>
             <input type="number" id="PasTotPrgDist" name="PasTotPrgDist" min="0" step="any" required>
             <div class="description">Total progressive passing distance</div>
-        </div>
-
-        <div class="form-group">
-            <label for="Clr">Clr:</label>
-            <input type="number" id="Clr" name="Clr" min="0" step="any" required>
-            <div class="description">Clearances</div>
         </div>
 
         <div class="form-group">
@@ -198,15 +174,15 @@
         </div>
 
         <div class="form-group">
-            <label for="TouAtt3rd">TouAtt3rd:</label>
-            <input type="number" id="TouAtt3rd" name="TouAtt3rd" min="0" step="any" required>
-            <div class="description">Touches in attacking 1/3</div>
+            <label for="TouDefPen">TouDefPen:</label>
+            <input type="number" id="TouDefPen" name="TouDefPen" min="0" step="any" required>
+            <div class="description">Touches in defensive penalty area</div>
         </div>
 
         <div class="form-group">
-            <label for="TouMid3rd">TouMid3rd:</label>
-            <input type="number" id="TouMid3rd" name="TouMid3rd" min="0" step="any" required>
-            <div class="description">Touches in middle 1/3</div>
+            <label for="TouAttPen">TouAttPen:</label>
+            <input type="number" id="TouAttPen" name="TouAttPen" min="0" step="any" required>
+            <div class="description">Touches in attacking penalty box</div>
         </div>
 
         <div class="form-group">
@@ -216,33 +192,15 @@
         </div>
 
         <div class="form-group">
-            <label for="Shots">TouAttPen:</label>
-            <input type="number" id="TouAttPen" name="TouAttPen" min="0" step="any" required>
-            <div class="description">Touches in attacking penalty box</div>
-        </div>
-
-        <div class="form-group">
             <label for="RecProg">RecProg:</label>
             <input type="number" id="RecProg" name="RecProg" min="0" step="any" required>
             <div class="description">Progressive passes received</div>
         </div>
 
         <div class="form-group">
-            <label for="PasTotCmp">PasTotCmp:</label>
-            <input type="number" id="PasTotCmp" name="PasTotCmp" min="0" step="any" required>
-            <div class="description">Total passes completed</div>
-        </div>
-
-        <div class="form-group">
-            <label for="Pas3rd">Pas3rd:</label>
-            <input type="number" id="Pas3rd" name="Pas3rd" min="0" step="any" required>
-            <div class="description">Passes in the 3rd zone</div>
-        </div>
-
-        <div class="form-group">
-            <label for="CarMis">CarMis:</label>
-            <input type="number" id="CarMis" name="CarMis" min="0" step="any" required>
-            <div class="description">Times dispossessed</div>
+            <label for="PasLonAtt">PasLonAtt:</label>
+            <input type="number" id="PasLonAtt" name="PasLonAtt" min="0" step="any" required>
+            <div class="description">Long attacking passes</div>
         </div>
 
         <div class="form-group">
@@ -252,9 +210,33 @@
         </div>
 
         <div class="form-group">
-            <label for="SCA">SCA:</label>
-            <input type="number" id="SCA" name="SCA" min="0" step="any" required>
-            <div class="description">Shot-creating actions</div>
+            <label for="TouMid3rd">TouMid3rd:</label>
+            <input type="number" id="TouMid3rd" name="TouMid3rd" min="0" step="any" required>
+            <div class="description">Touches in middle 1/3</div>
+        </div>
+
+        <div class="form-group">
+            <label for="CarDis">CarDis:</label>
+            <input type="number" id="CarDis" name="CarDis" min="0" step="any" required>
+            <div class="description">Times dispossessed</div>
+        </div>
+
+        <div class="form-group">
+            <label for="TouAtt3rd">TouAtt3rd:</label>
+            <input type="number" id="TouAtt3rd" name="TouAtt3rd" min="0" step="any" required>
+            <div class="description">Touches in attacking 1/3</div>
+        </div>
+
+        <div class="form-group">
+            <label for="CarMis">CarMis:</label>
+            <input type="number" id="CarMis" name="CarMis" min="0" step="any" required>
+            <div class="description">Times dispossessed</div>
+        </div>
+
+        <div class="form-group">
+            <label for="Pas3rd">Pas3rd:</label>
+            <input type="number" id="Pas3rd" name="Pas3rd" min="0" step="any" required>
+            <div class="description">Passes in the 3rd zone</div>
         </div>
 
         <div class="form-group">
@@ -264,70 +246,58 @@
         </div>
 
         <div class="form-group">
-            <label for="PasLonAtt">PasLonAtt:</label>
-            <input type="number" id="PasLonAtt" name="PasLonAtt" min="0" step="any" required>
-            <div class="description">Long attacking passes</div>
+            <label for="Off">Off:</label>
+            <input type="number" id="Off" name="Off" min="0" step="any" required>
+            <div class="description">Offsides</div>
         </div>
 
         <button type="submit" class="football-btn"></button>
         <button id="reset-btn" type="reset">Reset</button>
     </form>
 
+    <!-- Result Section -->
+    <div class="result" id="result">
+        <h2>Predicted Goals</h2>
+        <ul>
+            <li>Team 1: <span id="team1-goals">-</span></li>
+            <li>Team 2: <span id="team2-goals">-</span></li>
+        </ul>
+    </div>
+
+    <!-- Spinner -->
     <div class="spinner" id="spinner"></div>
-    <div class="result" id="result"></div>
 
     <script>
-        document.getElementById("prediction-form").addEventListener("submit", function (event) {
+        const form = document.getElementById('prediction-form');
+        const spinner = document.getElementById('spinner');
+        const resultSection = document.getElementById('result');
+        const team1Goals = document.getElementById('team1-goals');
+        const team2Goals = document.getElementById('team2-goals');
+
+        form.addEventListener('submit', function (event) {
             event.preventDefault();
-            let formData = new FormData(this);
-            let jsonData = {};
-            formData.forEach((value, key) => {
-                let numberValue = Number(value);
-                if (numberValue < 0) { // Ensure no negative values
-                    alert(`${key} must be 0 or greater.`);
-                    return;
-                }
-                jsonData[key] = numberValue;
-            });
+            resultSection.style.display = 'none';
+            spinner.style.display = 'block';
 
-            document.getElementById("spinner").style.display = "block"; // Show spinner
-            document.getElementById("result").innerHTML = "";
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
 
-            fetch("https://pitch-perfect-mbly.onrender.com/predict", { // Update with your correct API endpoint
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify([jsonData])
-            })
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById("spinner").style.display = "none"; // Hide spinner
-                    let resultDiv = document.getElementById("result");
-                    let predictions = data.predictions;
-                    let probabilities = data.predictions_proba;
+            // Simulate API call and delay
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                resultSection.style.display = 'block';
 
-                    // Class labels
-                    let classLabels = ["Defender", "Forward", "Midfielder"];
+                // Simulated prediction logic (this would be replaced with actual API call)
+                const team1Prediction = Math.random().toFixed(2);
+                const team2Prediction = Math.random().toFixed(2);
 
-                    let predictionHTML = "<h3>Prediction</h3><p>" + classLabels[predictions[0]] + "</p>";
-                    let probabilitiesHTML = "<h3>Probabilities</h3><ul>";
-                    probabilities[0].forEach((probability, index) => {
-                        probabilitiesHTML += "<li>" + classLabels[index] + ": " + (probability * 100).toFixed(2) + "%</li>";
-                    });
-                    probabilitiesHTML += "</ul>";
-
-                    resultDiv.innerHTML = predictionHTML + probabilitiesHTML;
-                })
-                .catch(error => {
-                    document.getElementById("spinner").style.display = "none"; // Hide spinner
-                    document.getElementById("result").innerHTML = "<p style='color: red;'>An error occurred. Please try again.</p>";
-                    console.error('Error:', error);
-                });
+                team1Goals.textContent = team1Prediction;
+                team2Goals.textContent = team2Prediction;
+            }, 2000);
         });
 
-        document.getElementById("reset-btn").addEventListener("click", function () {
-            document.getElementById("prediction-form").reset();
-            document.getElementById("result").innerHTML = "";
-        });
+        // Hide the result and spinner initially
+        resultSection.style.display = 'none';
     </script>
 </body>
 
